@@ -31,7 +31,6 @@ import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -175,7 +174,7 @@ public final class TesterinaUtils {
     public static String formatError(String errorMsg) {
         StringBuilder newErrMsg = new StringBuilder();
         errorMsg = errorMsg.replace("\n", "\n\t");
-        List<String> msgParts = Arrays.asList(errorMsg.split("\n"));
+        List<String> msgParts = List.of(errorMsg.split("\n"));
         boolean stackTraceStartFlag = true;
 
         for (String msg : msgParts) {

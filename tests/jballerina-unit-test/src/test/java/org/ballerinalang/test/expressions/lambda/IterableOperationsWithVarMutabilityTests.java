@@ -51,14 +51,14 @@ public class IterableOperationsWithVarMutabilityTests {
 
     @Test
     public void testInt1() {
-        List<Integer> values = Arrays.asList(-5, 2, 4, 5, 7, -8, -3, 2);
+        List<Integer> values = List.of(-5, 2, 4, 5, 7, -8, -3, 2);
         Object returns = BRunUtil.invoke(compileResult, "testInt1");
         Assert.assertEquals(returns, (long) values.stream().mapToInt(Integer::intValue).sum());
     }
 
     @Test
     public void testFloat1() {
-        List<Double> values = Arrays.asList(1.1, 2.2, -3.3, 4.4, 5.5);
+        List<Double> values = List.of(1.1, 2.2, -3.3, 4.4, 5.5);
         double intSum = values.stream().mapToDouble(Double::doubleValue).sum();
         Object returns = BRunUtil.invoke(compileResult, "testFloat1");
         Assert.assertEquals(returns, intSum);

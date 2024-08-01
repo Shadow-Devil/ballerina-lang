@@ -73,7 +73,6 @@ import io.ballerina.runtime.internal.types.BXmlType;
 import io.ballerina.runtime.internal.values.ReadOnlyUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static io.ballerina.runtime.api.constants.RuntimeConstants.BALLERINA_BUILTIN_PKG_PREFIX;
@@ -146,7 +145,7 @@ public final class PredefinedTypes {
                                               EMPTY_MODULE, true);
 
     public static final Type TYPE_XML = new BXmlType(TypeConstants.XML_TNAME,
-                                                     new BUnionType(Arrays.asList(TYPE_ELEMENT, TYPE_COMMENT,
+                                                     new BUnionType(List.of(TYPE_ELEMENT, TYPE_COMMENT,
                                                                                   TYPE_PROCESSING_INSTRUCTION,
                                                                                   TYPE_TEXT)), EMPTY_MODULE);
 
@@ -256,7 +255,7 @@ public final class PredefinedTypes {
         TYPE_DETAIL = new BMapType(TypeConstants.MAP_TNAME, TYPE_CLONEABLE, EMPTY_MODULE);
         TYPE_ERROR_DETAIL = ReadOnlyUtils.setImmutableTypeAndGetEffectiveType(TYPE_DETAIL);
         TYPE_ERROR = new BErrorType(TypeConstants.ERROR, EMPTY_MODULE, TYPE_DETAIL);
-        ANY_AND_READONLY_OR_ERROR_TYPE = new BUnionType(Arrays.asList(ANY_AND_READONLY_TYPE, TYPE_ERROR));
+        ANY_AND_READONLY_OR_ERROR_TYPE = new BUnionType(List.of(ANY_AND_READONLY_TYPE, TYPE_ERROR));
     }
 
     // public type JsonDecimal ()|boolean|string|decimal|JsonDecimal[]|map<JsonDecimal>;

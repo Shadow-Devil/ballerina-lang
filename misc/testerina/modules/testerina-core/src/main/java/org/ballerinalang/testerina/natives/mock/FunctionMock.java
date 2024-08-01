@@ -17,7 +17,6 @@ import org.ballerinalang.testerina.natives.Executor;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -95,7 +94,7 @@ public final class FunctionMock {
         String packageName = packageValues[1];
         String version = packageValues[2];
 
-        List<Object> argsList = Arrays.asList(args);
+        List<Object> argsList = List.of(args);
         StrandMetadata metadata = new StrandMetadata(orgName, packageName, version, originalFunction);
         return Executor.executeFunction(strand.scheduler, MOCK_STRAND_NAME, metadata, getClassLoader(),
                 originalClassName, originalFunction, argsList.toArray());
@@ -135,7 +134,7 @@ public final class FunctionMock {
                         new MapValueImpl<>(PredefinedTypes.TYPE_ERROR_DETAIL));
             }
 
-            List<Object> argsList = Arrays.asList(args);
+            List<Object> argsList = List.of(args);
             StrandMetadata metadata = new StrandMetadata(orgName, packageName, version, mockFunctionName);
 
             return Executor.executeFunction(

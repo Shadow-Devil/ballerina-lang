@@ -35,7 +35,6 @@ import org.ballerinalang.langserver.completions.util.Snippet;
 import org.ballerinalang.langserver.completions.util.SortingUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,7 +88,7 @@ public class OrderByClauseNodeContext extends IntermediateClauseNodeContext<Orde
                      OrderByClauseNode node,
                      List<LSCompletionItem> completionItems) {
         
-        List<TypeDescKind> basicTypes = Arrays.asList(
+        List<TypeDescKind> basicTypes = List.of(
                 TypeDescKind.STRING, TypeDescKind.INT,
                 TypeDescKind.BOOLEAN, TypeDescKind.FLOAT,
                 TypeDescKind.DECIMAL);

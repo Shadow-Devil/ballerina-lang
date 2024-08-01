@@ -23,7 +23,6 @@ import org.ballerinalang.bindgen.utils.BindgenUtils;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -140,7 +139,7 @@ public class JMethod extends BFunction {
         if (isStatic) {
             super.setFunctionName(getAlias(jClass, env.getAliases()) + "_" + methodName);
         } else {
-            List<String> reservedWords = Arrays.asList(BALLERINA_RESERVED_WORDS);
+            List<String> reservedWords = List.of(BALLERINA_RESERVED_WORDS);
             if (reservedWords.contains(methodName)) {
                 methodName = "'" + methodName;
             }

@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Related test cases about cancelled workers.
@@ -38,7 +38,7 @@ public class WorkerCancelledTest {
     @BeforeClass
     public void setup() {
         this.result = BCompileUtil.compile("test-src/workers/worker-cancelled.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
     }
 
     @Test()

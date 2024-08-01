@@ -101,17 +101,17 @@ public final class BalToolsUtil {
     private static final String TOOL = "tool";
     private static final String LIBS = "libs";
 
-    private static final List<String> options = Arrays.asList(VERSION_OPTION, VERSION_SHORT_OPTION, HELP_OPTION,
+    private static final List<String> options = List.of(VERSION_OPTION, VERSION_SHORT_OPTION, HELP_OPTION,
             HELP_SHORT_OPTION, DEBUG_OPTION);
-    private static final List<String> coreCommands = Arrays.asList(
+    private static final List<String> coreCommands = List.of(
             BUILD_COMMAND, RUN_COMMAND, TEST_COMMAND, DOC_COMMAND, PACK_COMMAND);
-    private static final List<String> packageCommands = Arrays.asList(NEW_COMMAND, ADD_COMMAND, PULL_COMMAND,
+    private static final List<String> packageCommands = List.of(NEW_COMMAND, ADD_COMMAND, PULL_COMMAND,
             PUSH_COMMAND, SEARCH_COMMAND, SEMVER_COMMAND, GRAPH_COMMAND, DEPRECATE_COMMAND);
     // if a command is a built-in tool command, remove it from this list
-    private static final List<String> otherCommands = Arrays.asList(CLEAN_COMMAND, FORMAT_COMMAND, BINDGEN_COMMAND,
+    private static final List<String> otherCommands = List.of(CLEAN_COMMAND, FORMAT_COMMAND, BINDGEN_COMMAND,
             SHELL_COMMAND, VERSION_COMMAND, OPENAPI_COMMAND, GRAPHQL_COMMAND, ASYNCAPI_COMMAND, GRPC_COMMAND,
             PERSIST_COMMAND, PROFILE_COMMAND);
-    private static final List<String> hiddenCommands = Arrays.asList(INIT_COMMAND, TOOL_COMMAND, DIST_COMMAND,
+    private static final List<String> hiddenCommands = List.of(INIT_COMMAND, TOOL_COMMAND, DIST_COMMAND,
             UPDATE_COMMAND, START_LANG_SERVER_COMMAND, START_DEBUG_ADAPTER_COMMAND, HELP_COMMAND, HOME_COMMAND,
             GENCACHE_COMMAND);
     // if a command is a built-in tool command, add it to this list

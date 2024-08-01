@@ -37,7 +37,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -68,7 +67,7 @@ public class BallerinaRecordTypeBuilder implements TypeBuilder.RECORD {
     @Override
     public TypeBuilder.RECORD withFields(RECORD_FIELD... fields) {
         recordFieldList.clear();
-        recordFieldList.addAll(Arrays.asList(fields));
+        recordFieldList.addAll(List.of(fields));
 
         return this;
     }
@@ -83,7 +82,7 @@ public class BallerinaRecordTypeBuilder implements TypeBuilder.RECORD {
     @Override
     public TypeBuilder.RECORD withTypeInclusions(TypeReferenceTypeSymbol... typeInclusions) {
         this.typeInclusions.clear();
-        this.typeInclusions.addAll(Arrays.asList(typeInclusions));
+        this.typeInclusions.addAll(List.of(typeInclusions));
 
         return this;
     }

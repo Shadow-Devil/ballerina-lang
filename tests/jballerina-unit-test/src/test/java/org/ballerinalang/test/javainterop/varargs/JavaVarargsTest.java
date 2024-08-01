@@ -181,7 +181,7 @@ public class JavaVarargsTest {
     }
 
     public static List<String> getList(String... vals) {
-        return Arrays.asList(vals);
+        return List.of(vals);
     }
 
     public static List<String> merge(List<String>... lists) {

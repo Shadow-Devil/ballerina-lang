@@ -30,7 +30,6 @@ import org.eclipse.lsp4j.CodeAction;
 import org.eclipse.lsp4j.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +48,7 @@ public class AddDocumentationCodeAction implements RangeBasedCodeActionProvider 
 
     @Override
     public List<SyntaxKind> getSyntaxKinds() {
-        return Arrays.asList(SyntaxKind.FUNCTION_DEFINITION,
+        return List.of(SyntaxKind.FUNCTION_DEFINITION,
                 SyntaxKind.OBJECT_TYPE_DESC,
                 SyntaxKind.CLASS_DEFINITION,
                 SyntaxKind.SERVICE_DECLARATION,
@@ -118,7 +117,7 @@ public class AddDocumentationCodeAction implements RangeBasedCodeActionProvider 
         CommandArgument docUriArg = CommandArgument.from(CommandConstants.ARG_KEY_DOC_URI, docUri);
         CommandArgument lineStart = CommandArgument.from(CommandConstants.ARG_KEY_NODE_RANGE,
                 PositionUtil.toRange(documentableNode.get().lineRange()));
-        List<Object> args = new ArrayList<>(Arrays.asList(docUriArg, lineStart));
+        List<Object> args = new ArrayList<>(List.of(docUriArg, lineStart));
 
         CodeAction action = new CodeAction(CommandConstants.ADD_DOCUMENTATION_TITLE);
         Command command = new Command(CommandConstants.ADD_DOCUMENTATION_TITLE, AddDocumentationExecutor.COMMAND, args);

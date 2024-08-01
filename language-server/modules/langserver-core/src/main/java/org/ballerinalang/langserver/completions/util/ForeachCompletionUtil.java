@@ -45,7 +45,6 @@ import org.eclipse.lsp4j.Range;
 import org.eclipse.lsp4j.TextEdit;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -60,7 +59,7 @@ public final class ForeachCompletionUtil {
     private static final String VAR_NAME = "item";
     private static final String VAR_NAME_RANGE_EXP = "i";
     private static final String VAR_TYPE = "var";
-    private static final List<TypeDescKind> ITERABLES = Arrays.asList(
+    private static final List<TypeDescKind> ITERABLES = List.of(
             TypeDescKind.STRING, TypeDescKind.ARRAY, TypeDescKind.TUPLE,
             TypeDescKind.MAP, TypeDescKind.RECORD, TypeDescKind.TABLE,
             TypeDescKind.STREAM, TypeDescKind.XML);

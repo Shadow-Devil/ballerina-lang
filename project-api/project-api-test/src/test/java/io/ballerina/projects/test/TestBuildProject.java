@@ -81,7 +81,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -292,7 +291,7 @@ public class TestBuildProject extends BaseTest {
         JBallerinaBackend jBallerinaBackend = JBallerinaBackend.from(compilation, JvmTarget.JAVA_17);
         Assert.assertEquals(jBallerinaBackend.diagnosticResult().diagnosticCount(), 12);
 
-        List<String> expectedPaths = Arrays.asList(
+        List<String> expectedPaths = List.of(
                 Paths.get("modules").resolve("utils").resolve("utils.bal").toString(),
                 Paths.get("modules").resolve("storage").resolve("db.bal").toString(),
                 Paths.get("modules").resolve("services").resolve("svc.bal").toString(),
@@ -2214,7 +2213,7 @@ public class TestBuildProject extends BaseTest {
 
         // Obtain the service module and check the documents order at project creation
         Module serviceModule = currentPackage.module(ModuleName.from(currentPackage.packageName(), "services"));
-        List<String> expectedServiceFileNames = Arrays.asList("auth.bal", "subscribe.bal", "update.bal");
+        List<String> expectedServiceFileNames = List.of("auth.bal", "subscribe.bal", "update.bal");
         List<String> actualServiceFileNames = getDocumentFileNames(serviceModule, serviceModule.documentIds());
 
         assertEquals(actualServiceFileNames.size(), 3);
@@ -2235,14 +2234,14 @@ public class TestBuildProject extends BaseTest {
 
         // Check the documents order after adding documents to a module
         // Check the order of source documents
-        List<String> expectedSourceFileNames = Arrays.asList("main.bal", sourceFileName, "utils.bal");
+        List<String> expectedSourceFileNames = List.of("main.bal", sourceFileName, "utils.bal");
         List<String> actualSourceFileNames = getDocumentFileNames(newDefaultModule, newDefaultModule.documentIds());
 
         assertEquals(actualSourceFileNames.size(), 3);
         assertEquals(actualSourceFileNames, expectedSourceFileNames);
 
         // Check the order of test documents
-        List<String> expectedTestFileNames = Arrays.asList(
+        List<String> expectedTestFileNames = List.of(
                 "tests/main_test.bal",
                 testFileName,
                 "tests/utils_test.bal");
@@ -2257,7 +2256,7 @@ public class TestBuildProject extends BaseTest {
         List<String> actualDiagnosticPaths = compilation.diagnosticResult().diagnostics().stream().map(diagnostic ->
                 diagnostic.location().lineRange().fileName()).distinct().collect(Collectors.toList());
 
-        List<String> expectedDiagnosticPaths = Arrays.asList(
+        List<String> expectedDiagnosticPaths = List.of(
                 "main.bal", Paths.get("tests").resolve("main_test.bal").toString(),
                 Paths.get("tests").resolve("utils_test.bal").toString(), "utils.bal",
                 Paths.get("modules").resolve("services").resolve("auth.bal").toString(),

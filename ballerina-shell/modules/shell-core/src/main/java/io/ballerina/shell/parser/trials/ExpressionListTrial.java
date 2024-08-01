@@ -23,8 +23,8 @@ import io.ballerina.compiler.syntax.tree.NodeParser;
 import io.ballerina.shell.parser.TrialTreeParser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Attempts to parse source as list of expressions.
@@ -48,7 +48,7 @@ public class ExpressionListTrial extends TreeParserTrial {
             source = source + ";";
         }
 
-        expressionList = Arrays.asList(source.split(";"));
+        expressionList = List.of(source.split(";"));
         for (String element: expressionList) {
             parsedNodes.add(NodeParser.parseActionOrExpression(element.trim()));
         }

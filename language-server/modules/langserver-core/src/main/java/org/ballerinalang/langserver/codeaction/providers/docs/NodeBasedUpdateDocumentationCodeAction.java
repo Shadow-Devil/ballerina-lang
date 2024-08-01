@@ -36,7 +36,6 @@ import org.eclipse.lsp4j.CodeActionKind;
 import org.eclipse.lsp4j.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -57,7 +56,7 @@ public class NodeBasedUpdateDocumentationCodeAction implements RangeBasedCodeAct
 
     @Override
     public List<SyntaxKind> getSyntaxKinds() {
-        return Arrays.asList(SyntaxKind.FUNCTION_DEFINITION,
+        return List.of(SyntaxKind.FUNCTION_DEFINITION,
                 SyntaxKind.OBJECT_TYPE_DESC,
                 SyntaxKind.CLASS_DEFINITION,
                 SyntaxKind.SERVICE_DECLARATION,
@@ -85,7 +84,7 @@ public class NodeBasedUpdateDocumentationCodeAction implements RangeBasedCodeAct
         CommandArgument docUriArg = CommandArgument.from(CommandConstants.ARG_KEY_DOC_URI, docUri);
         CommandArgument lineStart = CommandArgument.from(CommandConstants.ARG_KEY_NODE_RANGE, PositionUtil
                 .toRange(matchedDocumentableNode.get().lineRange()));
-        List<Object> args = new ArrayList<>(Arrays.asList(docUriArg, lineStart));
+        List<Object> args = new ArrayList<>(List.of(docUriArg, lineStart));
 
         CodeAction action = new CodeAction(CommandConstants.UPDATE_DOCUMENTATION_TITLE);
         Command command = new Command(CommandConstants.UPDATE_DOCUMENTATION_TITLE, UpdateDocumentationExecutor.COMMAND,

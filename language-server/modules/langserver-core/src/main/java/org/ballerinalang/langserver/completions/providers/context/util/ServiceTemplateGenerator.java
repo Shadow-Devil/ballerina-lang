@@ -58,7 +58,6 @@ import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.TextEdit;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -310,7 +309,7 @@ public class ServiceTemplateGenerator {
         label = shouldImport ? "service on " + moduleName + ":" +
                 serviceSnippet.symbolName : "service on " + symbolReference;
         filterText = moduleAlias.isEmpty() ? ItemResolverConstants.SERVICE :
-                String.join("_", Arrays.asList(ItemResolverConstants.SERVICE, moduleName));
+                String.join("_", List.of(ItemResolverConstants.SERVICE, moduleName));
         if (!shouldImport && !moduleAlias.equals(moduleName) && !moduleAlias.isEmpty()) {
             filterText += "_" + moduleAlias;
         }

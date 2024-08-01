@@ -54,7 +54,6 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -602,8 +601,7 @@ public class TestCommandTest extends BaseCommandTest {
             List<File> testableJars = files.filter(path -> path.toString().endsWith(".jar"))
                     .map(Path::toFile).toList();
             Assert.assertEquals(testableJars.size(), 2);   //2 because default module and 1 sub module
-            List<String> jarFileNames = Arrays.asList("projectWithMocks-testable.jar",
-                    "projectWithMocks.mod1-testable.jar");
+            List<String> jarFileNames = List.of("projectWithMocks-testable.jar", "projectWithMocks.mod1-testable.jar");
             for (File testableJar : testableJars) {
                 Assert.assertTrue(jarFileNames.contains(testableJar.getName()));
             }

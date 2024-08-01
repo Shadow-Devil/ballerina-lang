@@ -20,7 +20,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,7 +43,7 @@ public class ExpressionsTest extends AbstractSignatureHelpTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList("exprTableConstructor.json",
+        return List.of("exprTableConstructor.json",
                 "exprXMLAttributes.json",
                 "exprFunctionConstructorDirect.json",
                 "exprFunctionConstructorIndirect.json");

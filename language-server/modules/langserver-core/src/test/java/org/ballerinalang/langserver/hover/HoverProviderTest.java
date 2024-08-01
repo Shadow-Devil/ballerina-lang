@@ -32,7 +32,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -106,7 +105,7 @@ public class HoverProviderTest {
     }
 
     private List<String> skipList() {
-        return Arrays.asList("hover_for_api_docs_function1.json", "hover_for_api_docs_function2.json");
+        return List.of("hover_for_api_docs_function1.json", "hover_for_api_docs_function2.json");
     }
 
     private Position getPosition(JsonObject config) {

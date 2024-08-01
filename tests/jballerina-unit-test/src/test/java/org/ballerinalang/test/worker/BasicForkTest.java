@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Basic worker related tests.
@@ -42,7 +42,7 @@ public class BasicForkTest {
     @BeforeClass
     public void setup() {
         this.result = BCompileUtil.compile("test-src/workers/basic-fork.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
     }
 
     @Test

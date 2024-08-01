@@ -86,7 +86,6 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -350,7 +349,7 @@ public class BallerinaWorkspaceManager implements WorkspaceManager {
             }
             if (compilation.diagnosticResult().diagnostics().stream()
                     .anyMatch(diagnostic ->
-                            Arrays.asList(DiagnosticErrorCode.BAD_SAD_FROM_COMPILER.diagnosticId(),
+                            List.of(DiagnosticErrorCode.BAD_SAD_FROM_COMPILER.diagnosticId(),
                                             DiagnosticErrorCode.CYCLIC_MODULE_IMPORTS_DETECTED.diagnosticId())
                                     .contains(diagnostic.diagnosticInfo().code()))) {
                 projectPair.get().setCompilationCrashed(true);

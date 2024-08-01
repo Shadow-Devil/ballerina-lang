@@ -28,7 +28,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -217,7 +216,7 @@ public final class BootstrapRunner {
         commands.add(dumpBir ? "true" : "false"); // dump bir
         commands.add(useSystemClassLoader ? "true" : "false"); // useSystemClassLoader
         commands.add(String.valueOf(birCachePaths.length));
-        commands.addAll(Arrays.asList(birCachePaths));
+        commands.addAll(List.of(birCachePaths));
         commands.addAll(jarFilePaths);
         return commands;
     }

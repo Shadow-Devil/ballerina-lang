@@ -26,7 +26,6 @@ import io.ballerina.runtime.api.types.IntersectionType;
 import io.ballerina.runtime.api.types.Type;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,7 +81,7 @@ public class BIntersectionType extends BType implements IntersectionType {
 
     private BIntersectionType(String typeName, Module pkg, Type[] constituentTypes, int typeFlags, boolean readonly) {
         super(typeName, pkg, Object.class);
-        this.constituentTypes = Arrays.asList(constituentTypes);
+        this.constituentTypes = List.of(constituentTypes);
         this.typeFlags = typeFlags;
         this.readonly = readonly;
         if (readonly) {

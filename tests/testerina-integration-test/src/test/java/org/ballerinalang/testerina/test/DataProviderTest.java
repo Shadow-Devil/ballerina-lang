@@ -26,7 +26,6 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -155,7 +154,7 @@ public class DataProviderTest extends BaseTestCase {
 
     @Test
     public void testCodeFragmentKeys() throws BallerinaTestException, IOException {
-        List<String> keys = new ArrayList<>(Arrays.asList("'%60'%22%5Ca%22%22'",
+        List<String> keys = new ArrayList<>(List.of("'%60'%22%5Ca%22%22'",
                 "'%22%5Cu{D7FF}%22%22%09%22'", "'a +%0A%0D b'",
                 "'(x * 1) %21= (y / 3) || (a ^ b) == (b & c) >> (1 % 2)'", "'%281'", "'a:x(c%2Cd)[]; ^(x|y).ok();'",
                 "'map<any> v = { %22x%22: 1 };'"));
@@ -172,7 +171,7 @@ public class DataProviderTest extends BaseTestCase {
 
     @Test
     public void testCodeFragmentKeysWithWildCard() throws BallerinaTestException, IOException {
-        List<String> keys = new ArrayList<>(Arrays.asList("'%60'%22%5C*%22%22'",
+        List<String> keys = new ArrayList<>(List.of("'%60'%22%5C*%22%22'",
                 "'%22%5Cu{D7FF}%22*%09%22'", "'a +%0A* b'",
                 "'(x * 1) *= (y / 3) || (a ^ b) == (b & c) >> (1 % 2)'", "'*1'", "'a:x(c*d)[]; ^(x|y).ok();'",
                 "'map<any> v = { *x%22: 1 };'"));

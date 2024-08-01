@@ -35,7 +35,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static io.ballerina.runtime.api.utils.TypeUtils.getType;
@@ -132,7 +131,7 @@ public class LangLibRecordTest {
         assertEquals(((BArrayType) arrType).getElementType().getTag(), TypeTags.STRING_TAG);
         assertEquals(arr.size(), 2);
 
-        List<String> keys = Arrays.asList(arr.getStringArray());
+        List<String> keys = List.of(arr.getStringArray());
         assertTrue(keys.contains("name"));
         assertTrue(keys.contains("age"));
     }

@@ -158,7 +158,6 @@ import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -3117,7 +3116,7 @@ public class SymbolEnter extends BLangNodeVisitor {
 
         if (!targetRestRecType.fields.isEmpty()) {
             fields.putAll(targetRestRecType.fields);
-            List<String> intersectionFields = getIntersectionFields(Arrays.asList(targetRestRecType.fields,
+            List<String> intersectionFields = getIntersectionFields(List.of(targetRestRecType.fields,
                     unMappedFields));
             markAsOptional.putAll(unMappedFields);
             markAsOptional.putAll(targetRestRecType.fields);

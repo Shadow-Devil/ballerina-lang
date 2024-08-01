@@ -22,7 +22,6 @@ import org.ballerinalang.langserver.commons.completion.LSCompletionItem;
 import org.ballerinalang.langserver.completions.SnippetCompletionItem;
 import org.ballerinalang.langserver.completions.util.Snippet;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +34,7 @@ public final class QueryExpressionUtil {
     }
 
     public static List<LSCompletionItem> getCommonKeywordCompletions(BallerinaCompletionContext context) {
-        return Arrays.asList(
+        return List.of(
                 new SnippetCompletionItem(context, Snippet.KW_WHERE.get()),
                 new SnippetCompletionItem(context, Snippet.KW_LET.get()),
                 new SnippetCompletionItem(context, Snippet.CLAUSE_LET.get()),

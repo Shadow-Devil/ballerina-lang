@@ -31,7 +31,7 @@ import io.ballerina.runtime.internal.XmlFactory;
 import io.ballerina.runtime.internal.errors.ErrorCodes;
 import io.ballerina.runtime.internal.errors.ErrorHelper;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Set the children of an XML if its a singleton. Error otherwise.
@@ -64,7 +64,7 @@ public final class SetChildren {
         } else if (TypeTags.isXMLTypeTag(childrenType.getTag())) {
             ErrorHelper.getRuntimeException(ErrorCodes.INCOMPATIBLE_TYPE,
                                                      TypeCreator.createUnionType(
-                                                             Arrays.asList(PredefinedTypes.TYPE_XML,
+                                                             List.of(PredefinedTypes.TYPE_XML,
                                                                            PredefinedTypes.TYPE_STRING),
                                                              TypeFlags.asMask(TypeFlags.ANYDATA, TypeFlags.PURETYPE)),
                                                      childrenType);

@@ -833,7 +833,7 @@ public class JBallerinaDebugServer implements IDebugProtocolServer {
             VariablesArguments childVarRequestArgs = new VariablesArguments();
             childVarRequestArgs.setVariablesReference(dapVariable.getVariablesReference());
             Variable[] childVariables = computeChildVariables(childVarRequestArgs);
-            return Arrays.asList(childVariables);
+            return List.of(childVariables);
         } catch (Exception e) {
             return new ArrayList<>();
         }

@@ -50,7 +50,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -135,7 +134,7 @@ public class LSPackageLoader {
                 Environment environment = EnvironmentBuilder.getBuilder().build();
                 BallerinaDistribution ballerinaDistribution = BallerinaDistribution.from(environment);
                 PackageRepository packageRepository = ballerinaDistribution.packageRepository();
-                List<String> skippedLangLibs = Arrays.asList("lang.annotations", "lang.__internal", "lang.query");
+                List<String> skippedLangLibs = List.of("lang.annotations", "lang.__internal", "lang.query");
                 lsClientLogger.logTrace("Loading packages from Ballerina distribution");
                 this.distRepoPackages.addAll(checkAndResolvePackagesFromRepository(packageRepository,
                         skippedLangLibs, Collections.emptySet()));

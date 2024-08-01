@@ -36,7 +36,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -84,7 +83,7 @@ public class TestUtils {
         return new Object[][] {
                 { "[]", new ArrayList<>(Collections.emptyList()) },
                 { "[\"1.1.11\"]", Collections.singletonList("1.1.11") },
-                { "[\"1.0.0\", \"1.2.0\"]", Arrays.asList("1.0.0", "1.2.0") }
+                { "[\"1.0.0\", \"1.2.0\"]", List.of("1.0.0", "1.2.0") }
         };
     }
 

@@ -58,7 +58,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -142,7 +141,7 @@ public final class TestUtil {
         CompletionCapabilities completionCapabilities = new CompletionCapabilities();
         SignatureHelpCapabilities signatureHelpCapabilities = new SignatureHelpCapabilities();
         SignatureInformationCapabilities sigInfoCapabilities =
-                new SignatureInformationCapabilities(Arrays.asList("markdown", "plaintext"));
+                new SignatureInformationCapabilities(List.of("markdown", "plaintext"));
 
         signatureHelpCapabilities.setSignatureInformation(sigInfoCapabilities);
         completionCapabilities.setCompletionItem(new CompletionItemCapabilities(true));

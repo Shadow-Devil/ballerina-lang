@@ -48,7 +48,6 @@ import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.Position;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -339,7 +338,7 @@ public class ListenerDeclarationNodeContext extends AbstractCompletionProvider<L
         Get the keyword completion items. Here we add the keywords associated with the allowed expressions.
         The table and stream keywords (for query expressions) will be suggested via the module items
          */
-        List<Snippet> keywords = Arrays.asList(Snippet.KW_NEW, Snippet.KW_CHECK, Snippet.KW_CHECK_PANIC,
+        List<Snippet> keywords = List.of(Snippet.KW_NEW, Snippet.KW_CHECK, Snippet.KW_CHECK_PANIC,
                 Snippet.KW_TRAP);
         for (Snippet keyword : keywords) {
             completionItems.add(new SnippetCompletionItem(context, keyword.get()));

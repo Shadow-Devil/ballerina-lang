@@ -32,7 +32,6 @@ import io.ballerina.runtime.api.values.BTable;
 import io.ballerina.runtime.internal.TypeChecker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static io.ballerina.runtime.internal.errors.ErrorReasons.ITERATOR_MUTABILITY_ERROR;
@@ -88,7 +87,7 @@ public final class Next {
             return;
         }
 
-        List<Object> currentKeys = new ArrayList<>(Arrays.asList(table.getKeys()));
+        List<Object> currentKeys = new ArrayList<>(List.of(table.getKeys()));
         for (Object returnedValue : returnedKeys) {
             if (TypeChecker.isEqual(currentKeys.get(0), returnedValue)) {
                 currentKeys.remove(0);

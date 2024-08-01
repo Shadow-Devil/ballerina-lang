@@ -46,7 +46,6 @@ import io.ballerina.runtime.internal.types.BTupleType;
 import io.ballerina.runtime.internal.types.BUnionType;
 import io.ballerina.runtime.internal.types.BXmlType;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -315,7 +314,7 @@ public final class TypeCreator {
      * @return the new union type
      */
     public static UnionType createUnionType(Type... memberTypes) {
-        return new BUnionType(Arrays.asList(memberTypes));
+        return new BUnionType(List.of(memberTypes));
     }
 
     /**

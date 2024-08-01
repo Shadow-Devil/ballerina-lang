@@ -27,7 +27,6 @@ import io.ballerina.runtime.api.values.BArray;
 import io.ballerina.runtime.api.values.BString;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -53,7 +52,7 @@ public final class AssertionDiffEvaluator {
             for (String item : valueArray) {
                 if (item.length() > MAX_ARG_LENGTH) {
                     String[] partitions = item.split(PARTITION_REGEX);
-                    valueList.addAll(Arrays.asList(partitions));
+                    valueList.addAll(List.of(partitions));
                 } else {
                     valueList.add(item);
                 }
@@ -61,7 +60,7 @@ public final class AssertionDiffEvaluator {
         } else {
             if (value.length() > MAX_ARG_LENGTH) {
                 String[] partitions = value.split(PARTITION_REGEX);
-                valueList.addAll(Arrays.asList(partitions));
+                valueList.addAll(List.of(partitions));
             } else {
                 valueList.add(value);
             }

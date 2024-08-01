@@ -275,7 +275,7 @@ public abstract class AbstractCompletionProvider<T extends Node> implements Ball
                 });
 
         completionItems.addAll(this.getBasicAndOtherTypeCompletions(context));
-        completionItems.addAll(Arrays.asList(
+        completionItems.addAll(List.of(
                 new SnippetCompletionItem(context, Snippet.KW_SERVICE.get()),
                 new SnippetCompletionItem(context, Snippet.KW_RECORD.get()),
                 new SnippetCompletionItem(context, Snippet.KW_FUNCTION.get()),
@@ -501,7 +501,7 @@ public abstract class AbstractCompletionProvider<T extends Node> implements Ball
         Add the start keywords of the following actions.
         start, wait, flush, check, check panic, trap, query action (query pipeline starts with from keyword)
          */
-        return Arrays.asList(
+        return List.of(
                 new SnippetCompletionItem(context, Snippet.KW_START.get()),
                 new SnippetCompletionItem(context, Snippet.KW_WAIT.get()),
                 new SnippetCompletionItem(context, Snippet.KW_FLUSH.get()),
@@ -568,7 +568,7 @@ public abstract class AbstractCompletionProvider<T extends Node> implements Ball
 
     protected List<LSCompletionItem> getTypeQualifierItems(BallerinaCompletionContext context) {
         // Note: here we do not add the service type qualifier since it is being added via getTypeItems call.
-        return Arrays.asList(
+        return List.of(
                 new SnippetCompletionItem(context, Snippet.KW_ISOLATED.get()),
                 new SnippetCompletionItem(context, Snippet.KW_CLIENT.get()),
                 new SnippetCompletionItem(context, Snippet.KW_TRANSACTIONAL.get()));

@@ -47,7 +47,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +71,7 @@ public class ConfigTest {
     public static final Type COLOR_ENUM_UNION = new BUnionType(COLOR_ENUM_MEMBERS, "Colors", ROOT_MODULE,
             0, false, SymbolFlags.ENUM);
     public static final Type COLOR_ENUM = new BIntersectionType(module, new Type[]{}, COLOR_ENUM_UNION, 0, true);
-    public static final Type AMBIGUOUS_UNION = new BUnionType(Arrays.asList(TypeCreator.createMapType(TYPE_ANYDATA),
+    public static final Type AMBIGUOUS_UNION = new BUnionType(List.of(TypeCreator.createMapType(TYPE_ANYDATA),
             TypeCreator.createMapType(TYPE_STRING)), true);
     private final Set<Module> moduleSet = Set.of(module);
 
@@ -84,7 +83,7 @@ public class ConfigTest {
         VariableKey[] keys = {key};
         configVarMap.put(module, keys);
         ConfigResolver configResolver = new ConfigResolver(configVarMap, diagnosticLog,
-                Arrays.asList(configProvider));
+                List.of(configProvider));
         Map<VariableKey, ConfigValue> configValueMap = configResolver.resolveConfigs();
         Assert.assertTrue(expectedJClass.isInstance(configValueMap.get(key).getValue()),
                 "Invalid value provided for variable : " + key.variable);

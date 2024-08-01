@@ -28,7 +28,6 @@ import org.wso2.ballerinalang.compiler.tree.BLangFunction;
 import org.wso2.ballerinalang.compiler.tree.BLangPackage;
 import org.wso2.ballerinalang.compiler.tree.BLangTypeDefinition;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -53,7 +52,7 @@ public class ExternalDependencyAnnotationTest {
     @Test(description = "Test the ExternalDependency annotation attach points")
     public void testExternalDependencyAttachPoints() {
         Set<AttachPoint> attachPoints = pkgNode.functions.get(0).annAttachments.get(0).annotationSymbol.points;
-        List<String> expectedAttachPoints = Arrays.asList("type", "class", "function");
+        List<String> expectedAttachPoints = List.of("type", "class", "function");
 
         assertEquals(attachPoints.size(), 3);
         assertTrue(attachPoints.stream()

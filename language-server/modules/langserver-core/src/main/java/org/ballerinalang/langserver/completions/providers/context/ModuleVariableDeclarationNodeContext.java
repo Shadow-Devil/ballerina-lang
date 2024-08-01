@@ -37,7 +37,6 @@ import org.ballerinalang.langserver.completions.util.Snippet;
 import org.ballerinalang.langserver.completions.util.SortingUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -162,7 +161,7 @@ public class ModuleVariableDeclarationNodeContext extends
         switch (lastQualifier.get().kind()) {
             case PUBLIC_KEYWORD:
                 completionItems.addAll(getTypeDescContextItems(context));
-                List<Snippet> snippets = Arrays.asList(
+                List<Snippet> snippets = List.of(
                         Snippet.KW_TYPE, Snippet.KW_ISOLATED,
                         Snippet.KW_FINAL, Snippet.KW_CONST, Snippet.KW_LISTENER, Snippet.KW_CLIENT,
                         Snippet.KW_VAR, Snippet.KW_ENUM, Snippet.KW_XMLNS, Snippet.KW_CLASS,

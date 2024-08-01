@@ -27,7 +27,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static io.ballerina.runtime.api.utils.TypeUtils.getType;
 
@@ -42,7 +42,7 @@ public class WorkerSyncSendTest {
     public void setup() {
 
         this.result = BCompileUtil.compile("test-src/workers/sync-send.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
     }
 
     @Test

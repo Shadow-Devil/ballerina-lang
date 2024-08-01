@@ -69,7 +69,6 @@ import org.eclipse.lsp4j.services.TextDocumentService;
 import org.eclipse.lsp4j.services.WorkspaceService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -139,7 +138,7 @@ public class BallerinaLanguageServer extends AbstractExtendedLanguageServer
             return CompletableFuture.supplyAsync(() -> res);
         }
 
-        final SignatureHelpOptions signatureHelpOptions = new SignatureHelpOptions(Arrays.asList("(", ","));
+        final SignatureHelpOptions signatureHelpOptions = new SignatureHelpOptions(List.of("(", ","));
 
         res.getCapabilities().setSignatureHelpProvider(signatureHelpOptions);
         res.getCapabilities().setDocumentSymbolProvider(true);
@@ -453,6 +452,6 @@ public class BallerinaLanguageServer extends AbstractExtendedLanguageServer
     }
 
     private List<String> getCompletionTriggerCharacters() {
-        return Arrays.asList(":", ".", ">", "@", "/", "\\", "?");
+        return List.of(":", ".", ">", "@", "/", "\\", "?");
     }
 }

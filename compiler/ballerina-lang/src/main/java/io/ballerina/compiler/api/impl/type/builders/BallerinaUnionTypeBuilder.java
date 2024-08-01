@@ -38,7 +38,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.ballerinalang.model.symbols.SymbolOrigin.COMPILED_SOURCE;
@@ -65,7 +64,7 @@ public class BallerinaUnionTypeBuilder implements TypeBuilder.UNION {
     @Override
     public TypeBuilder.UNION withMemberTypes(TypeSymbol... memberTypes) {
         this.memberTypes.clear();
-        this.memberTypes.addAll(Arrays.asList(memberTypes));
+        this.memberTypes.addAll(List.of(memberTypes));
 
         return this;
     }

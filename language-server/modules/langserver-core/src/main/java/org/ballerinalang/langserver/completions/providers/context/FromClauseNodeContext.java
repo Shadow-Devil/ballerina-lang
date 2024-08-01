@@ -37,7 +37,6 @@ import org.ballerinalang.langserver.completions.util.Snippet;
 import org.ballerinalang.langserver.completions.util.SortingUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -118,7 +117,7 @@ public class FromClauseNodeContext extends IntermediateClauseNodeContext<FromCla
                      FromClauseNode node,
                      List<LSCompletionItem> completionItems) {
 
-        List<TypeDescKind> iterables = Arrays.asList(
+        List<TypeDescKind> iterables = List.of(
                 TypeDescKind.STRING, TypeDescKind.ARRAY,
                 TypeDescKind.MAP, TypeDescKind.TABLE,
                 TypeDescKind.STREAM, TypeDescKind.XML);

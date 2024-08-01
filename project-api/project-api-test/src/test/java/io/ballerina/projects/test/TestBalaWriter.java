@@ -51,7 +51,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static io.ballerina.projects.util.ProjectConstants.BALA_DIR_NAME;
@@ -285,7 +284,7 @@ public class TestBalaWriter {
             List<ModuleDependency> moduleDependencyGraph = dependencyGraphJson.getModuleDependencies();
             Assert.assertEquals(moduleDependencyGraph.size(), 3);
 
-            List<String> moduleNames = new ArrayList<>(Arrays.asList("winery", "winery.services", "winery.storage"));
+            List<String> moduleNames = new ArrayList<>(List.of("winery", "winery.services", "winery.storage"));
             for (ModuleDependency moduleDependency : moduleDependencyGraph) {
                 if (!moduleNames.contains(moduleDependency.getModuleName())) {
                     Assert.fail("invalid module:" + moduleDependency.getModuleName());

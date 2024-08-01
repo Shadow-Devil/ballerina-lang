@@ -25,7 +25,6 @@ import org.ballerinalang.langserver.completions.providers.AbstractCompletionProv
 import org.ballerinalang.langserver.completions.util.Snippet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -46,7 +45,7 @@ public abstract class MatchStatementContext<T extends Node> extends AbstractComp
         List<LSCompletionItem> completionItems = new ArrayList<>();
         List<Symbol> visibleSymbols = context.visibleSymbols(context.getCursorPosition());
         // Error keyword suggestion is covered by the module completion items
-        List<Snippet> snippets = Arrays.asList(Snippet.KW_TRUE, Snippet.KW_FALSE, Snippet.KW_VAR);
+        List<Snippet> snippets = List.of(Snippet.KW_TRUE, Snippet.KW_FALSE, Snippet.KW_VAR);
 
         snippets.forEach(snippet -> completionItems.add(new SnippetCompletionItem(context, snippet.get())));
         List<Symbol> filteredConstants = visibleSymbols.stream()

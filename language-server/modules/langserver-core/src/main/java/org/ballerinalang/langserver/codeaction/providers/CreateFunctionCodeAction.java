@@ -66,7 +66,6 @@ import org.eclipse.lsp4j.jsonrpc.messages.Either;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -225,7 +224,7 @@ public class CreateFunctionCodeAction implements DiagnosticBasedCodeActionProvid
 
         List<String> args = new ArrayList<>();
         int argIndex = 1;
-        List<SymbolKind> argumentKindList = Arrays.asList(SymbolKind.VARIABLE, SymbolKind.CONSTANT);
+        List<SymbolKind> argumentKindList = List.of(SymbolKind.VARIABLE, SymbolKind.CONSTANT);
 
         for (FunctionArgumentNode fnArgNode : fnCallExprNode.get().arguments()) {
             Optional<TypeSymbol> type = semanticModel.typeOf(fnArgNode);

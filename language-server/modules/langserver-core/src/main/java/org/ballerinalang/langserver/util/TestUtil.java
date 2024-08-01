@@ -103,7 +103,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -885,7 +884,7 @@ public final class TestUtil {
                 CompletionCapabilities completionCapabilities = new CompletionCapabilities();
                 SignatureHelpCapabilities signatureHelpCapabilities = new SignatureHelpCapabilities();
                 SignatureInformationCapabilities sigInfoCapabilities =
-                        new SignatureInformationCapabilities(Arrays.asList("markdown", "plaintext"));
+                        new SignatureInformationCapabilities(List.of("markdown", "plaintext"));
                 signatureHelpCapabilities.setSignatureInformation(sigInfoCapabilities);
                 completionCapabilities.setCompletionItem(new CompletionItemCapabilities(true));
                 completionCapabilities.setContextSupport(true);
@@ -912,7 +911,7 @@ public final class TestUtil {
                 DocumentSymbolCapabilities documentSymbolCapabilities = new DocumentSymbolCapabilities();
                 documentSymbolCapabilities.setHierarchicalDocumentSymbolSupport(true);
                 documentSymbolCapabilities.setTagSupport(
-                        new SymbolTagSupportCapabilities(Arrays.asList(SymbolTag.Deprecated)));
+                        new SymbolTagSupportCapabilities(List.of(SymbolTag.Deprecated)));
                 textDocumentClientCapabilities.setDocumentSymbol(documentSymbolCapabilities);
                 capabilities.setTextDocument(textDocumentClientCapabilities);
 

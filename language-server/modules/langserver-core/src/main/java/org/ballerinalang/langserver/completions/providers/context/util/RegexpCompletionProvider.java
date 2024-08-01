@@ -35,7 +35,6 @@ import org.ballerinalang.langserver.completions.util.Snippet;
 import org.ballerinalang.langserver.completions.util.SnippetBlock;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -46,11 +45,11 @@ import java.util.List;
  */
 public final class RegexpCompletionProvider {
 
-    private static final List<String> WORD_SEPARATOR_ARRAY = Arrays.asList("`", "~", "!", "@", "#", "$", "%", "^", "&",
+    private static final List<String> WORD_SEPARATOR_ARRAY = List.of("`", "~", "!", "@", "#", "$", "%", "^", "&",
             "*", "(", ")", "-", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", ".", "<", ">", "/",
             "?");
 
-    private static final HashSet<String> RE_FLAGS = new HashSet<>(Arrays.asList("i", "m", "s", "x"));
+    private static final HashSet<String> RE_FLAGS = new HashSet<>(List.of("i", "m", "s", "x"));
 
     private RegexpCompletionProvider() {
     }

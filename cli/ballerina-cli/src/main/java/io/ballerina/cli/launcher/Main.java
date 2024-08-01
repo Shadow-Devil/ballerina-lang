@@ -27,7 +27,6 @@ import picocli.CommandLine;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -126,7 +125,7 @@ public final class Main {
             cmdParser.setPosixClusteredShortOptionsAllowed(false);
 
 
-            List<CommandLine> parsedCommands = cmdParser.parse(args);
+            List<CommandLine> parsedCommands = cmdParser.parseArgs(args).asCommandLineList();
 
             if (!defaultCmd.argList.isEmpty() && cmdParser.getSubcommands().get(defaultCmd.argList.get(0)) == null) {
                 throw LauncherUtils.createUsageExceptionWithHelp("unknown command '"
@@ -173,7 +172,7 @@ public final class Main {
             Thread.currentThread().setContextClassLoader(customToolClassLoader);
             return ServiceLoader.load(BLauncherCmd.class, customToolClassLoader);
         } else if (null == args || args.length == 0
-                || Arrays.asList(HELP_COMMAND, HELP_OPTION, HELP_SHORT_OPTION).contains(args[0])) {
+                || List.of(HELP_COMMAND, HELP_OPTION, HELP_SHORT_OPTION).contains(args[0])) {
             CustomToolClassLoader customToolClassLoader = BalToolsUtil.getCustomToolClassLoader(HELP_COMMAND);
             Thread.currentThread().setContextClassLoader(customToolClassLoader);
             return ServiceLoader.load(BLauncherCmd.class, customToolClassLoader);

@@ -33,7 +33,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -76,7 +75,7 @@ public class CodeCoverageReportTest extends BaseTestCase {
         }
         copyReportDTDFile(reportRoot);
         //Validate Package names in XML File
-        List<String> expectedPackageNames = Arrays.asList(
+        List<String> expectedPackageNames = List.of(
                 "report/codecov$test/0/types",
                 "single-module-codecov",
                 "report/codecov/0/creators",
@@ -197,13 +196,13 @@ public class CodeCoverageReportTest extends BaseTestCase {
     private HashMap<String, List<String>> getExpectedCoverageClasses() {
         HashMap<String, List<String>> coverageClassMap = new HashMap<>();
         coverageClassMap.put(multiModuleTestRoot,
-                Arrays.asList(multiModuleTestRoot + "/main", multiModuleTestRoot + "/foo",
+                List.of(multiModuleTestRoot + "/main", multiModuleTestRoot + "/foo",
                         multiModuleTestRoot + "/$value$Record", multiModuleTestRoot + "/$typedesc$Record",
                         multiModuleTestRoot + "/$value$ABC"));
         coverageClassMap.put(multiModuleTestRoot + "/modules/bar",
                 List.of(multiModuleTestRoot + "/modules/bar/main"));
         coverageClassMap.put(multiModuleTestRoot + "/modules/math",
-                Arrays.asList(multiModuleTestRoot + "/modules/math/add", multiModuleTestRoot +
+                List.of(multiModuleTestRoot + "/modules/math/add", multiModuleTestRoot +
                         "/modules/math/divide", multiModuleTestRoot + "/modules/math/foo$$$math"));
         coverageClassMap.put(multiModuleTestRoot + "/modules/bar.tests",
                 List.of(multiModuleTestRoot + "/modules/bar.tests/foo$$$bar$$$tests"));

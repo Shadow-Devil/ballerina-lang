@@ -66,7 +66,6 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +83,7 @@ public final class StaticMethods {
     private static final BArrayType intArrayType = new BArrayType(PredefinedTypes.TYPE_INT);
     private static final BArrayType jsonArrayType = new BArrayType(PredefinedTypes.TYPE_JSON);
     private static final BTupleType tupleType = new BTupleType(
-            Arrays.asList(PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_FLOAT, PredefinedTypes.TYPE_STRING,
+            List.of(PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_FLOAT, PredefinedTypes.TYPE_STRING,
                           PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_STRING));
     private static Module errorModule = new Module("testorg", "distinct_error.errors", "1");
 
@@ -728,7 +727,7 @@ public final class StaticMethods {
     }
 
     static void bar() {
-        List<Integer> integers = Arrays.asList(0);
+        List<Integer> integers = List.of(0);
         integers.forEach(i -> {
             throw ErrorCreator.createError(StringUtils.fromString("error!!!"));
         });

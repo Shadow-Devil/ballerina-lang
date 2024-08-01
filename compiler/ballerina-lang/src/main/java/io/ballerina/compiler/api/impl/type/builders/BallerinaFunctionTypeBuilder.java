@@ -43,7 +43,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.ballerinalang.model.symbols.SymbolOrigin.COMPILED_SOURCE;
@@ -71,7 +70,7 @@ public class BallerinaFunctionTypeBuilder implements TypeBuilder.FUNCTION {
     @Override
     public TypeBuilder.FUNCTION withParams(ParameterSymbol... parameters) {
         parameterSymbols.clear();
-        parameterSymbols.addAll(Arrays.asList(parameters));
+        parameterSymbols.addAll(List.of(parameters));
 
         return this;
     }

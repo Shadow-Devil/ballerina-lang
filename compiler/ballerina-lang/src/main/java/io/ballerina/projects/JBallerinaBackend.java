@@ -57,7 +57,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -713,13 +712,13 @@ public class JBallerinaBackend extends CompilerBackend {
         if (project.kind().equals(ProjectKind.SINGLE_FILE_PROJECT)) {
             String fileName = project.sourceRoot().toFile().getName();
             nativeImageName = fileName.substring(0, fileName.lastIndexOf(DOT));
-            nativeArgs.addAll(Arrays.asList(graalVMBuildOptions, "-jar",
+            nativeArgs.addAll(List.of(graalVMBuildOptions, "-jar",
                     executableFilePath.toString(),
                     "-H:Name=" + nativeImageName,
                     "--no-fallback"));
         } else {
             nativeImageName = project.currentPackage().packageName().toString();
-            nativeArgs.addAll(Arrays.asList(graalVMBuildOptions, "-jar",
+            nativeArgs.addAll(List.of(graalVMBuildOptions, "-jar",
                     executableFilePath.toString(),
                     "-H:Name=" + nativeImageName,
                     "-H:Path=" + executableFilePath.getParent(),

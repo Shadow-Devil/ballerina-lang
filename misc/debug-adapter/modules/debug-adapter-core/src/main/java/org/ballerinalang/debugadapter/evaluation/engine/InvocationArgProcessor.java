@@ -40,7 +40,6 @@ import org.ballerinalang.debugadapter.evaluation.engine.invokable.RuntimeStaticM
 import org.ballerinalang.debugadapter.evaluation.utils.EvaluationUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -139,7 +138,7 @@ public abstract class InvocationArgProcessor {
                 GET_REST_ARG_ARRAY_METHOD, argTypeNames);
         List<Value> argValues = new ArrayList<>();
         argValues.add(arrayType);
-        argValues.addAll(Arrays.asList(values));
+        argValues.addAll(List.of(values));
         getRestArgArray.setArgValues(argValues);
         return getRestArgArray.invokeSafely();
     }

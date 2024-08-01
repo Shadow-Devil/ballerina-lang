@@ -48,7 +48,6 @@ import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getDefaul
 import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getDocumentForSingleSource;
 import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getSymbolsInFile;
 import static io.ballerina.tools.text.LinePosition.from;
-import static java.util.Arrays.asList;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -137,12 +136,12 @@ public class QueryExpressionTest {
     @DataProvider(name = "visibleSymbolPosProvider")
     public Object[][] getVisibleSymbolsAtPos() {
         return new Object[][]{
-                {20, 14, 2, asList("testQueryExpression", "Student")},
-                {29, 14, 6, asList("testQueryExpression", "Student", "s1", "s2", "s3",
+                {20, 14, 2, List.of("testQueryExpression", "Student")},
+                {29, 14, 6, List.of("testQueryExpression", "Student", "s1", "s2", "s3",
                         "students")},
-                {40, 14, 8, asList("testQueryExpression", "Student", "s1", "s2", "s3",
+                {40, 14, 8, List.of("testQueryExpression", "Student", "s1", "s2", "s3",
                         "students", "fullName", "x")},
-                {46, 14, 10, asList("testQueryExpression", "Student", "s1", "s2", "s3",
+                {46, 14, 10, List.of("testQueryExpression", "Student", "s1", "s2", "s3",
                         "students", "fullName", "x", "gpaRanking", "selectedStudents")},
         };
     }

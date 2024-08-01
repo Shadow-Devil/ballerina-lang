@@ -49,7 +49,6 @@ import org.wso2.ballerinalang.compiler.semantics.model.types.BUnionType;
 import org.wso2.ballerinalang.compiler.util.Name;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1126,13 +1125,13 @@ public class LargeMethodOptimizer {
 
         if (mappingConstructorEntry instanceof BIRNode.BIRMappingConstructorKeyValueEntry) {
             callSetEntry.jMethodVMSig = "(" + GET_HANDLE_VALUE + GET_OBJECT + GET_OBJECT + "J)V";
-            callSetEntry.args = new ArrayList<>(Arrays.asList(handleArrayOperand,
+            callSetEntry.args = new ArrayList<>(List.of(handleArrayOperand,
                     ((BIRNode.BIRMappingConstructorKeyValueEntry) mappingConstructorEntry).keyOp,
                     tempVars.typeCastOperand, tempVars.arrayIndexOperand));
             callSetEntry.name = "setKeyValueEntry";
         } else {
             callSetEntry.jMethodVMSig = HANDLE_OBJECT_LONG_ARGS;
-            callSetEntry.args = new ArrayList<>(Arrays.asList(handleArrayOperand, tempVars.typeCastOperand,
+            callSetEntry.args = new ArrayList<>(List.of(handleArrayOperand, tempVars.typeCastOperand,
                     tempVars.arrayIndexOperand));
             callSetEntry.name = "setSpreadFieldEntry";
         }
@@ -1155,7 +1154,7 @@ public class LargeMethodOptimizer {
         BIRNonTerminator.TypeCast typeCastInstruction = new BIRNonTerminator.TypeCast(null,
                 tempVars.typeCastOperand, insLhsOp, symbolTable.anyOrErrorType, true);
         newInsList.add(typeCastInstruction);
-        callSetEntry.args = new ArrayList<>(Arrays.asList(handleArrayOperand, tempVars.typeCastOperand,
+        callSetEntry.args = new ArrayList<>(List.of(handleArrayOperand, tempVars.typeCastOperand,
                 tempVars.arrayIndexOperand));
 
         if (listConstructorEntry instanceof BIRNode.BIRListConstructorExprEntry) {

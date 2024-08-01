@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Basic worker related tests.
@@ -41,11 +41,11 @@ public class BasicWorkerTest {
     @BeforeClass
     public void setup() {
         this.result = BCompileUtil.compile("test-src/workers/basic-worker-actions.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
 
         this.asyncSendResult =
                 BCompileUtil.compile("test-src/workers/worker_async_send_as_expression.bal");
-        Assert.assertEquals(asyncSendResult.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(asyncSendResult.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
     }
 
     @Test

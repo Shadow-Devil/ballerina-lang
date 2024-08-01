@@ -35,7 +35,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -250,7 +249,7 @@ public class TreeTraversalAPITest extends AbstractSyntaxTreeAPITest {
         NonTerminalNode funcDef = funcToken.parent();
 
         List<SyntaxKind> actualChildNodeKindList = new ArrayList<>();
-        List<SyntaxKind> expectedChildNodeKindList = Arrays.asList(
+        List<SyntaxKind> expectedChildNodeKindList = List.of(
                 SyntaxKind.PUBLIC_KEYWORD,
                 SyntaxKind.FUNCTION_KEYWORD,
                 SyntaxKind.IDENTIFIER_TOKEN,

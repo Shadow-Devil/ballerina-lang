@@ -20,7 +20,7 @@ package io.ballerina.shell.cli.handlers;
 
 import io.ballerina.shell.cli.BallerinaShell;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Reads source from a file.
@@ -34,6 +34,6 @@ public class DeleteCommand extends AbstractCommand {
 
     @Override
     public void run(String... args) {
-        ballerinaShell.delete(Arrays.asList(args));
+        ballerinaShell.delete(List.of(args));
     }
 }

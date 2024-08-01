@@ -24,7 +24,6 @@ import org.wso2.ballerinalang.compiler.semantics.model.types.BType;
 import org.wso2.ballerinalang.compiler.util.Name;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -264,7 +263,7 @@ public abstract class BIRTerminator extends BIRAbstractInstruction implements BI
         public void setRhsOperands(BIROperand[] operands) {
             this.fp = operands[0];
             this.args = new ArrayList<>();
-            this.args.addAll(Arrays.asList(operands).subList(1, operands.length));
+            this.args.addAll(List.of(operands).subList(1, operands.length));
         }
 
         @Override
@@ -568,7 +567,7 @@ public abstract class BIRTerminator extends BIRAbstractInstruction implements BI
 
         @Override
         public void setRhsOperands(BIROperand[] operands) {
-            this.exprList = new ArrayList<>(Arrays.asList(operands));
+            this.exprList = new ArrayList<>(List.of(operands));
         }
 
         @Override
@@ -874,7 +873,7 @@ public abstract class BIRTerminator extends BIRAbstractInstruction implements BI
 
         @Override
         public void setRhsOperands(BIROperand[] operands) {
-            this.valueExprs = Arrays.asList(operands);
+            this.valueExprs = List.of(operands);
         }
 
         @Override

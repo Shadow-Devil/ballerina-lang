@@ -28,7 +28,6 @@ import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.ballerinalang.debugger.test.utils.DebugUtils.findFreePort;
@@ -96,7 +95,7 @@ public class BallerinaRunRemoteDebugTest extends BaseTestCase {
         String port = debugOptions[0].contains("=") ? debugOptions[0].split("=")[1] : debugOptions[1];
         String msg = REMOTE_DEBUG_LISTENING + port;
         clientLeecher = new LogLeecher(msg);
-        List<String> debugOptionsList = new ArrayList<>(Arrays.asList(debugOptions));
+        List<String> debugOptionsList = new ArrayList<>(List.of(debugOptions));
         debugOptionsList.add(executablePath);
         balClient.debugMain("run", debugOptionsList.toArray(new String[0]), null, null, new LogLeecher[]{clientLeecher},
                 debugTestRunner.testProjectPath.toString(), 15);

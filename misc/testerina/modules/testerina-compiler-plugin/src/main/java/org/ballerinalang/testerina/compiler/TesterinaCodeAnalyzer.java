@@ -31,7 +31,7 @@ import io.ballerina.tools.diagnostics.DiagnosticFactory;
 import io.ballerina.tools.diagnostics.DiagnosticInfo;
 import io.ballerina.tools.diagnostics.DiagnosticSeverity;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static org.ballerinalang.testerina.compiler.TesterinaCompilerPluginConstants.TEST_MODULE_NAME;
 
@@ -57,7 +57,7 @@ public class TesterinaCodeAnalyzer extends CodeAnalyzer {
                 serviceDeclarationNode.members().forEach(member ->
                     validateTestAnnotation(syntaxNodeAnalysisContext, member));
             }
-        }, Arrays.asList(SyntaxKind.CLASS_DEFINITION, SyntaxKind.SERVICE_DECLARATION));
+        }, List.of(SyntaxKind.CLASS_DEFINITION, SyntaxKind.SERVICE_DECLARATION));
     }
 
     private static void validateTestAnnotation(SyntaxNodeAnalysisContext syntaxNodeAnalysisContext, Node member) {

@@ -33,7 +33,6 @@ import org.eclipse.lsp4j.CodeActionKind;
 import org.eclipse.lsp4j.TextEdit;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +51,7 @@ public class ImplementAllCodeAction extends AbstractImplementMethodCodeAction im
 
     @Override
     public List<SyntaxKind> getSyntaxKinds() {
-        return Arrays.asList(SyntaxKind.CLASS_DEFINITION,
+        return List.of(SyntaxKind.CLASS_DEFINITION,
                 SyntaxKind.SERVICE_DECLARATION,
                 SyntaxKind.OBJECT_METHOD_DEFINITION,
                 SyntaxKind.OBJECT_CONSTRUCTOR,

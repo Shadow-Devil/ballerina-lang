@@ -20,7 +20,6 @@ package org.ballerinalang.langserver.completions.util;
 import org.ballerinalang.langserver.common.utils.CommonUtil;
 import org.ballerinalang.langserver.completions.util.SnippetBlock.Kind;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -496,7 +495,7 @@ public final class SnippetGenerator {
         String snippet = "resource function ${1:accessor} ${2:path}(${3})${4} {" + CommonUtil.LINE_SEPARATOR + "\t${5}"
                 + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.RESOURCE_FUNC_DEF,
-                generateFilterText(Arrays.asList(ItemResolverConstants.RESOURCE, ItemResolverConstants.FUNCTION)),
+                generateFilterText(List.of(ItemResolverConstants.RESOURCE, ItemResolverConstants.FUNCTION)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -599,7 +598,7 @@ public final class SnippetGenerator {
         String snippet = "type ${1:ObjectName} object {${2}};";
 
         return new SnippetBlock(ItemResolverConstants.OBJECT_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE,
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE,
                         ItemResolverConstants.OBJECT_KEYWORD)), snippet, ItemResolverConstants.SNIPPET_TYPE,
                 Kind.SNIPPET);
     }
@@ -695,7 +694,7 @@ public final class SnippetGenerator {
                 + CommonUtil.LINE_SEPARATOR + "};";
 
         return new SnippetBlock(ItemResolverConstants.RECORD_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE,
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE,
                         ItemResolverConstants.RECORD_KEYWORD)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
@@ -709,7 +708,7 @@ public final class SnippetGenerator {
         String snippet = "type ${1:ErrorName} error<${2:map<anydata>}>;";
 
         return new SnippetBlock(ItemResolverConstants.ERROR_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE,
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE,
                         ItemResolverConstants.ERROR)), snippet,
                 ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
@@ -735,7 +734,7 @@ public final class SnippetGenerator {
         String snippet = "type ${1:TypeName} table<${2}>;";
 
         return new SnippetBlock(ItemResolverConstants.TABLE_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE, ItemResolverConstants.TABLE)),
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE, ItemResolverConstants.TABLE)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -748,7 +747,7 @@ public final class SnippetGenerator {
         String snippet = "type ${1:TypeName} table<${2}> key${3}";
 
         return new SnippetBlock(ItemResolverConstants.TABLE_WITH_KEY_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE,
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE,
                         ItemResolverConstants.TABLE, ItemResolverConstants.KEY)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
@@ -787,7 +786,7 @@ public final class SnippetGenerator {
                 + CommonUtil.LINE_SEPARATOR + "|};";
 
         return new SnippetBlock(ItemResolverConstants.CLOSED_RECORD_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.TYPE_TYPE,
+                generateFilterText(List.of(ItemResolverConstants.TYPE_TYPE,
                         ItemResolverConstants.RECORD_KEYWORD)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
@@ -972,7 +971,7 @@ public final class SnippetGenerator {
         String snippet = "retry transaction {" + CommonUtil.LINE_SEPARATOR
                 + "\t${1}" + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.RETRY_TRANSACTION,
-                generateFilterText(Arrays.asList(ItemResolverConstants.RETRY, ItemResolverConstants.TRANSACTION)),
+                generateFilterText(List.of(ItemResolverConstants.RETRY, ItemResolverConstants.TRANSACTION)),
                 snippet, ItemResolverConstants.STATEMENT_TYPE, Kind.STATEMENT);
     }
 
@@ -1179,7 +1178,7 @@ public final class SnippetGenerator {
                 + CommonUtil.LINE_SEPARATOR + "}";
 
         return new SnippetBlock(ItemResolverConstants.ON_FAIL_CLAUSE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.ON, ItemResolverConstants.FAIL_KEYWORD)),
+                generateFilterText(List.of(ItemResolverConstants.ON, ItemResolverConstants.FAIL_KEYWORD)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1192,7 +1191,7 @@ public final class SnippetGenerator {
         String snippet = "on conflict ";
 
         return new SnippetBlock(ItemResolverConstants.ON_CONFLICT_CLAUSE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.ON, "conflict")),
+                generateFilterText(List.of(ItemResolverConstants.ON, "conflict")),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1217,7 +1216,7 @@ public final class SnippetGenerator {
         String snippet = "remote function ${1:name}(${2})${3} {" + CommonUtil.LINE_SEPARATOR + "\t${4}"
                 + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.REMOTE_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.REMOTE_KEYWORD, ItemResolverConstants.FUNCTION)),
+                generateFilterText(List.of(ItemResolverConstants.REMOTE_KEYWORD, ItemResolverConstants.FUNCTION)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1229,7 +1228,7 @@ public final class SnippetGenerator {
     public static SnippetBlock getRemoteMethodDeclSnippet() {
         String snippet = "remote function ${1:name}(${2})${3};";
         return new SnippetBlock(ItemResolverConstants.REMOTE_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.REMOTE_KEYWORD, ItemResolverConstants.FUNCTION)),
+                generateFilterText(List.of(ItemResolverConstants.REMOTE_KEYWORD, ItemResolverConstants.FUNCTION)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1242,7 +1241,7 @@ public final class SnippetGenerator {
         String snippet = "function init(${1}) {" + CommonUtil.LINE_SEPARATOR + "\t${2}" +
                 CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.NEW_OBJECT_INITIALIZER_TYPE,
-                generateFilterText(Arrays.asList("init", ItemResolverConstants.FUNCTION)), snippet,
+                generateFilterText(List.of("init", ItemResolverConstants.FUNCTION)), snippet,
                 ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1255,7 +1254,7 @@ public final class SnippetGenerator {
         String snippet = "public function attach(service ${1:s}, string? ${2:name} = ()) returns error? {"
                 + CommonUtil.LINE_SEPARATOR + "\t${3}" + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.ATTACH_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList("attach", ItemResolverConstants.PUBLIC_KEYWORD,
+                generateFilterText(List.of("attach", ItemResolverConstants.PUBLIC_KEYWORD,
                         ItemResolverConstants.FUNCTION)), snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1268,7 +1267,7 @@ public final class SnippetGenerator {
         String snippet = "public function 'start() returns error? {" + CommonUtil.LINE_SEPARATOR + "\t${1}"
                 + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.START_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList(ItemResolverConstants.START_KEYWORD,
+                generateFilterText(List.of(ItemResolverConstants.START_KEYWORD,
                         ItemResolverConstants.PUBLIC_KEYWORD, ItemResolverConstants.FUNCTION)),
                 snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
@@ -1282,7 +1281,7 @@ public final class SnippetGenerator {
         String snippet = "public function gracefulStop() returns error? {" + CommonUtil.LINE_SEPARATOR + "\t${1}"
                 + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.GRACEFUL_STOP_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList("gracefulStop", ItemResolverConstants.PUBLIC_KEYWORD,
+                generateFilterText(List.of("gracefulStop", ItemResolverConstants.PUBLIC_KEYWORD,
                         ItemResolverConstants.FUNCTION)), snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1295,7 +1294,7 @@ public final class SnippetGenerator {
         String snippet = "public function immediateStop() returns error? {" + CommonUtil.LINE_SEPARATOR + "\t${1}"
                 + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.IMMEDIATE_STOP_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList("immediateStop", ItemResolverConstants.PUBLIC_KEYWORD,
+                generateFilterText(List.of("immediateStop", ItemResolverConstants.PUBLIC_KEYWORD,
                         ItemResolverConstants.FUNCTION)), snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 
@@ -1308,7 +1307,7 @@ public final class SnippetGenerator {
         String snippet = "public function __detach(service ${1:s}) returns error? {"
                 + CommonUtil.LINE_SEPARATOR + "\t${2}" + CommonUtil.LINE_SEPARATOR + "}";
         return new SnippetBlock(ItemResolverConstants.DETACH_FUNCTION_TYPE,
-                generateFilterText(Arrays.asList("detach", ItemResolverConstants.PUBLIC_KEYWORD,
+                generateFilterText(List.of("detach", ItemResolverConstants.PUBLIC_KEYWORD,
                         ItemResolverConstants.FUNCTION)), snippet, ItemResolverConstants.SNIPPET_TYPE, Kind.SNIPPET);
     }
 

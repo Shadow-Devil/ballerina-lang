@@ -268,7 +268,7 @@ public class ImportsManager {
             newText.append(text, nextStart, matcher.start(1));
             // Identify org name and module names
             String orgName = matcher.group(1);
-            List<String> moduleNames = Arrays.asList(matcher.group(2).split("\\."));
+            List<String> moduleNames = List.of(matcher.group(2).split("\\."));
             for (int i = 1; i < moduleNames.size(); i++) {
                 if (BALLERINA_KEYWORDS.contains(moduleNames.get(i))) {
                     moduleNames.set(i, QUOTE + moduleNames.get(i));

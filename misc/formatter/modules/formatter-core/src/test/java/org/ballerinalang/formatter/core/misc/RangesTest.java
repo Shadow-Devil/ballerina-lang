@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,7 +62,7 @@ public class RangesTest extends RangeFormatterTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList("ranges_1.bal", "ranges_2.bal", "ranges_3.bal", "ranges_4.bal", "ranges_5.bal");
+        return List.of("ranges_1.bal", "ranges_2.bal", "ranges_3.bal", "ranges_4.bal", "ranges_5.bal");
     }
 
     @Override

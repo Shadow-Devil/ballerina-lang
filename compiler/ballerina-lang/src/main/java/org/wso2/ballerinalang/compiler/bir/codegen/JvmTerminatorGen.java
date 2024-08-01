@@ -58,7 +58,6 @@ import org.wso2.ballerinalang.compiler.util.Unifier;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -129,7 +128,6 @@ import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.LOCK_STOR
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.LOCK_VALUE;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.MAKE_CONCAT_WITH_CONSTANTS;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.MAP;
-import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.MODULE_INITIALIZER;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.MODULE_INIT_CLASS_NAME;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.OBJECT;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmConstants.PANIC_FIELD;
@@ -190,6 +188,7 @@ import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.LOAD_ARR
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.LOAD_JOBJECT_TYPE;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.LOCK;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.MAP_PUT;
+import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.MODULE_INITIALIZER;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.MULTIPLE_RECEIVE_CALL;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.PANIC_IF_IN_LOCK;
 import static org.wso2.ballerinalang.compiler.bir.codegen.JvmSignatures.PASS_OBJECT_RETURN_OBJECT;
@@ -1280,7 +1279,7 @@ public class JvmTerminatorGen {
     private void genFlushIns(BIRTerminator.Flush ins, int localVarOffset, int invocationVarIndex) {
 
         this.mv.visitVarInsn(ALOAD, localVarOffset);
-        JvmCodeGenUtil.loadChannelDetails(this.mv, Arrays.asList(ins.channels), invocationVarIndex);
+        JvmCodeGenUtil.loadChannelDetails(this.mv, List.of(ins.channels), invocationVarIndex);
         this.mv.visitMethodInsn(INVOKEVIRTUAL, STRAND_CLASS, "handleFlush",
                                 HANDLE_FLUSH, false);
         this.storeToVar(ins.lhsOp.variableDcl);
@@ -1442,13 +1441,13 @@ public class JvmTerminatorGen {
                 this.mv.visitInsn(DRETURN);
             }
             case TypeTags.UNION -> {
-                this.handleErrorRetInUnion(returnVarRefIndex, Arrays.asList(func.workerChannels),
+                this.handleErrorRetInUnion(returnVarRefIndex, List.of(func.workerChannels),
                         (BUnionType) bType, invocationVarIndex, localVarOffset);
                 this.mv.visitVarInsn(ALOAD, returnVarRefIndex);
                 this.mv.visitInsn(ARETURN);
             }
             case TypeTags.ERROR -> {
-                this.notifyChannels(Arrays.asList(func.workerChannels), returnVarRefIndex, invocationVarIndex);
+                this.notifyChannels(List.of(func.workerChannels), returnVarRefIndex, invocationVarIndex);
                 this.mv.visitVarInsn(ALOAD, returnVarRefIndex);
                 this.mv.visitInsn(ARETURN);
             }

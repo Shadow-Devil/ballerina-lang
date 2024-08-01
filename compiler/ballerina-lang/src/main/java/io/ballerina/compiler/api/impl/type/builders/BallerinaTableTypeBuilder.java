@@ -47,7 +47,6 @@ import org.wso2.ballerinalang.compiler.util.TypeTags;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -84,14 +83,14 @@ public class BallerinaTableTypeBuilder implements TypeBuilder.TABLE {
     @Override
     public TypeBuilder.TABLE withKeyConstraints(TypeSymbol... keyTypes) {
         this.keyTypes.clear();
-        this.keyTypes.addAll(Arrays.asList(keyTypes));
+        this.keyTypes.addAll(List.of(keyTypes));
         return this;
     }
 
     @Override
     public TypeBuilder.TABLE withKeySpecifiers(String... fieldNames) {
         this.fieldNames.clear();
-        this.fieldNames.addAll(Arrays.asList(fieldNames));
+        this.fieldNames.addAll(List.of(fieldNames));
 
         return this;
     }

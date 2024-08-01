@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import org.wso2.ballerinalang.compiler.packaging.Patten;
 import org.wso2.ballerinalang.compiler.packaging.converters.Converter;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -84,7 +83,7 @@ public class PattenTest {
 
         List<String> strings = subject.convert(mock, null).collect(Collectors.toList());
 
-        Assert.assertEquals(strings, Arrays.asList("root-dir > cache1",
+        Assert.assertEquals(strings, List.of("root-dir > cache1",
                                                    "root-dir > cache2",
                                                    "root-dir > cache3"));
     }
@@ -119,7 +118,7 @@ public class PattenTest {
 
         List<String> strings = subject.convert(mock, null).collect(Collectors.toList());
 
-        Assert.assertEquals(strings, Arrays.asList("project-dir > dir1 > x.bal",
+        Assert.assertEquals(strings, List.of("project-dir > dir1 > x.bal",
                                                    "project-dir > y.bal",
                                                    "project-dir > dir2 > dir3 > f.bal"));
     }
@@ -159,7 +158,7 @@ public class PattenTest {
 
         List<String> strings = subject.convert(mock, null).collect(Collectors.toList());
 
-        Assert.assertEquals(strings, Arrays.asList("my-dir > hello > cache1 > world > dir1 > x.bal",
+        Assert.assertEquals(strings, List.of("my-dir > hello > cache1 > world > dir1 > x.bal",
                                                    "my-dir > hello > cache1 > world > y.bal",
                                                    "my-dir > hello > cache1 > world > dir2 > dir3 > f.bal",
                                                    "my-dir > hello > cache2 > world > dir1 > x.bal",

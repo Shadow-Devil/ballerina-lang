@@ -22,7 +22,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -46,7 +45,7 @@ public class ClassDefContextTest extends CompletionTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList("config33.json", "config34.json");
+        return List.of("config33.json", "config34.json");
     }
 
     @Override

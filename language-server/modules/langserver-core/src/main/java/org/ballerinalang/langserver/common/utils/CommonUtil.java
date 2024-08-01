@@ -65,7 +65,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +116,7 @@ public final class CommonUtil {
     public static final String EXPR_SCHEME = "expr";
 
     //lang.array, regexp, lang.value, lang.runtime, jballerina.java are not pre-declared.
-    public static final List<String> PRE_DECLARED_LANG_LIBS = Arrays.asList("lang.boolean", "lang.decimal",
+    public static final List<String> PRE_DECLARED_LANG_LIBS = List.of("lang.boolean", "lang.decimal",
             "lang.error", "lang.float", "lang.function", "lang.future", "lang.int", "lang.map", "lang.object",
             "lang.stream", "lang.string", "lang.table", "lang.transaction", "lang.typedesc", "lang.xml");
 

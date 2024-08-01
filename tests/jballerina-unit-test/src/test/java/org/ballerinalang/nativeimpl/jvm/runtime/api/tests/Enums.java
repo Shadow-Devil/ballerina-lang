@@ -36,7 +36,6 @@ import io.ballerina.runtime.api.values.BString;
 import io.ballerina.runtime.api.values.BTypedesc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -70,7 +69,7 @@ public final class Enums {
 
     public static void testFiniteTypeUnionElements(BTypedesc t, BArray elements) {
         Set<String> members = new HashSet<>();
-        members.addAll(Arrays.asList(elements.getStringArray()));
+        members.addAll(List.of(elements.getStringArray()));
         BError notFiniteTypeError = ErrorCreator.createError(
                 StringUtils.fromString("union member type is not a finite type"));
         BError matchError = ErrorCreator.createError(

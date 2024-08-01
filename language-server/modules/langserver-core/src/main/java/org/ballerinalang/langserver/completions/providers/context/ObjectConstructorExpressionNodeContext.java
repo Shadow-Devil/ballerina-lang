@@ -35,7 +35,6 @@ import org.ballerinalang.langserver.completions.util.Snippet;
 import org.ballerinalang.langserver.completions.util.SortingUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -58,7 +57,7 @@ public class ObjectConstructorExpressionNodeContext
         List<LSCompletionItem> completionItems = new ArrayList<>();
         ResolvedContext resolvedContext;
         if (this.onSuggestObjectOnly(ctx, node)) {
-            completionItems.addAll(Arrays.asList(
+            completionItems.addAll(List.of(
                     new SnippetCompletionItem(ctx, Snippet.KW_OBJECT.get()),
                     new SnippetCompletionItem(ctx, Snippet.EXPR_OBJECT_CONSTRUCTOR.get())
             ));

@@ -32,7 +32,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -54,7 +53,7 @@ public class RecordDesugarTest {
 
     @Test(description = "Test record field set")
     public void testRecordFieldSet() {
-        List<String> functions = Arrays.asList("setRequiredField", "setNillableField", "setOptionalField");
+        List<String> functions = List.of("setRequiredField", "setNillableField", "setOptionalField");
         result.getExpectedBIR().functions.stream().filter(function -> functions.contains(function.name.value))
                 .forEach(this::assertFunctions);
     }

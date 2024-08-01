@@ -37,7 +37,6 @@ import org.eclipse.lsp4j.Command;
 import org.eclipse.lsp4j.Range;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,7 +108,7 @@ public class DocsCodeLensesProvider extends AbstractCodeLensesProvider {
                 CommandArgument docUriArg = CommandArgument.from(CommandConstants.ARG_KEY_DOC_URI, documentUri);
                 CommandArgument lineStart = CommandArgument.from(CommandConstants.ARG_KEY_NODE_RANGE,
                         nodeRange);
-                List<Object> args = new ArrayList<>(Arrays.asList(docUriArg, lineStart));
+                List<Object> args = new ArrayList<>(List.of(docUriArg, lineStart));
                 Command command = new Command(CommandConstants.ADD_DOCUMENTATION_TITLE,
                         AddDocumentationExecutor.COMMAND, args);
                 lenses.add(new CodeLens(nodeRange, command, null));

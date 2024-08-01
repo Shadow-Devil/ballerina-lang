@@ -74,7 +74,6 @@ import org.wso2.ballerinalang.compiler.util.TypeTags;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -287,7 +286,7 @@ class JvmObservabilityGen {
         recordCheckPointCallIns.jClassName = OBSERVE_UTILS;
         recordCheckPointCallIns.jMethodVMSig = CHECKPOINT_CALL;
         recordCheckPointCallIns.name = RECORD_CHECKPOINT_METHOD;
-        recordCheckPointCallIns.args = new ArrayList<>(Arrays.asList(pkgOperand, fileNameOperand,
+        recordCheckPointCallIns.args = new ArrayList<>(List.of(pkgOperand, fileNameOperand,
                 startLineOperand, startColOperand));
         currentBB.instructions.add(offset, recordCheckPointCallIns);
     }
@@ -727,7 +726,7 @@ class JvmObservabilityGen {
         observeStartCallTerminator.jMethodVMSig = START_RESOURCE_OBSERVATION;
         observeStartCallTerminator.name = START_RESOURCE_OBSERVATION_METHOD;
         List<BIROperand> positionOperands = generatePositionArgs(pkg, func, observeStartBB, originalInsPosition);
-        List<BIROperand> otherOperands = Arrays.asList(serviceNameOperand, resourcePathOrFunctionOperand,
+        List<BIROperand> otherOperands = List.of(serviceNameOperand, resourcePathOrFunctionOperand,
                 resourceAccessorOperand, isResourceOperand, isRemoteOperand);
         positionOperands.addAll(otherOperands);
         observeStartCallTerminator.args = positionOperands;
@@ -765,7 +764,7 @@ class JvmObservabilityGen {
         observeStartCallTerminator.jMethodVMSig = START_CALLABLE_OBSERVATION;
         observeStartCallTerminator.name = START_CALLABLE_OBSERVATION_METHOD;
         List<BIROperand> positionOperands = generatePositionArgs(pkg, func, observeStartBB, originalInsPosition);
-        List<BIROperand> otherOperands = Arrays.asList(objectOperand, actionOperand, isMainEntryPointOperand,
+        List<BIROperand> otherOperands = List.of(objectOperand, actionOperand, isMainEntryPointOperand,
                 isRemoteOperand, isWorkerOperand);
         positionOperands.addAll(otherOperands);
         observeStartCallTerminator.args = positionOperands;
@@ -1071,7 +1070,7 @@ class JvmObservabilityGen {
         BIROperand startColOperand = getTempLocalVariable(START_COLUMN_STRING, pos,
                 pos.lineRange().startLine().offset() + 1, symbolTable.intType, observeStartBB);
         addLocalVarIfAbsent(func, startColOperand.variableDcl);
-        return new ArrayList<>(Arrays.asList(pkgOperand, fileNameOperand, startLineOperand, startColOperand));
+        return new ArrayList<>(List.of(pkgOperand, fileNameOperand, startLineOperand, startColOperand));
     }
 
     private BIROperand getTempLocalVariable(String name, Location pos, Object value, BType variableType,

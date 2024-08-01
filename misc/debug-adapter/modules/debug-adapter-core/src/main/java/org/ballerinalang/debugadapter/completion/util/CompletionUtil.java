@@ -57,7 +57,7 @@ import static io.ballerina.compiler.api.symbols.SymbolKind.METHOD;
 public final class CompletionUtil {
 
     private static final String PARENTHESIS = "()";
-    private static final List<String> triggerCharacters = Arrays.asList(".", ">");
+    private static final List<String> triggerCharacters = List.of(".", ">");
 
     private CompletionUtil() {
     }
@@ -75,7 +75,7 @@ public final class CompletionUtil {
                                                   NonTerminalNode node, int lineNumber) {
         SuspendedContext suspendedContext = completionContext.getSuspendedContext();
         TextDocument textDocument = suspendedContext.getDocument().textDocument();
-        List<String> lines = Arrays.asList(textDocument.toString().split(System.lineSeparator()));
+        List<String> lines = List.of(textDocument.toString().split(System.lineSeparator()));
 
         if (node.kind() == SyntaxKind.FUNCTION_BODY_BLOCK) {
             int nodeStartLine = node.lineRange().startLine().line();

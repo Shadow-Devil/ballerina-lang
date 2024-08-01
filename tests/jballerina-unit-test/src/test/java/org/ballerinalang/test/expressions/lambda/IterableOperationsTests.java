@@ -112,7 +112,7 @@ public class IterableOperationsTests {
 
     @Test
     public void testInt1() {
-        List<Integer> values = Arrays.asList(-5, 2, 4, 5, 7, -8, -3, 2);
+        List<Integer> values = List.of(-5, 2, 4, 5, 7, -8, -3, 2);
         int sum = values.stream().mapToInt(Integer::intValue).sum();
         Object arr = BRunUtil.invoke(basic, "testInt1");
         BArray returns = (BArray) arr;
@@ -129,7 +129,7 @@ public class IterableOperationsTests {
 
     @Test
     public void testInt2() {
-        List<Integer> values = Arrays.asList(2, 4, 5, 7, 2);
+        List<Integer> values = List.of(2, 4, 5, 7, 2);
         int sum = values.stream().mapToInt(Integer::intValue).sum();
         Object arr = BRunUtil.invoke(basic, "testInt2");
         BArray returns = (BArray) arr;
@@ -145,7 +145,7 @@ public class IterableOperationsTests {
 
     @Test
     public void testFloat1() {
-        List<Double> values = Arrays.asList(1.1, 2.2, -3.3, 4.4, 5.5);
+        List<Double> values = List.of(1.1, 2.2, -3.3, 4.4, 5.5);
         double intSum = values.stream().mapToDouble(Double::doubleValue).sum();
         double sum = values.stream().mapToDouble(Double::doubleValue).sum();
         Object arr = BRunUtil.invoke(basic, "testFloat1");
@@ -163,7 +163,7 @@ public class IterableOperationsTests {
 
     @Test
     public void testFloat2() {
-        List<Double> values = Arrays.asList(1.1, 2.2, 4.4, 5.5);
+        List<Double> values = List.of(1.1, 2.2, 4.4, 5.5);
         double sum = values.stream().mapToDouble(Double::doubleValue).sum();
         Object arr = BRunUtil.invoke(basic, "testFloat2");
         BArray returns = (BArray) arr;
