@@ -35,7 +35,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static io.ballerina.runtime.api.utils.TypeUtils.getType;
@@ -136,7 +135,7 @@ public class LangLibMapTest {
         assertEquals(((ArrayType) arr.getType()).getElementType().getTag(), TypeTags.STRING_TAG);
         assertEquals(arr.size(), 3);
 
-        List<String> keys = Arrays.asList(arr.getStringArray());
+        List<String> keys = List.of(arr.getStringArray());
         assertTrue(keys.contains("lk"));
         assertTrue(keys.contains("us"));
         assertTrue(keys.contains("uk"));

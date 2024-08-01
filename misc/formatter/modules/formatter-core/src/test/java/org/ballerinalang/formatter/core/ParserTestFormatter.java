@@ -21,7 +21,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +49,7 @@ public class ParserTestFormatter extends FormatterTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList(
+        return List.of(
                 // the following tests need to be skipped since these contain intended extra/no minutiae
                 "minutiae_test_01.bal",
                 "minutiae_test_02.bal",

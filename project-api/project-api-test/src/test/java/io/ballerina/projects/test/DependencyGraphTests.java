@@ -58,7 +58,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -658,7 +657,7 @@ public class DependencyGraphTests extends BaseTest {
         }});
 
         Collection<String> allDependents = dependencyGraph.getAllDependents("D");
-        Set<String> expectedDependents = new HashSet<>(Arrays.asList("A", "B"));
+        Set<String> expectedDependents = new HashSet<>(List.of("A", "B"));
 
         Assert.assertEquals(expectedDependents, allDependents);
     }
@@ -683,7 +682,7 @@ public class DependencyGraphTests extends BaseTest {
         }});
 
         Collection<String> allDependencies = dependencyGraph.getAllDependencies("A");
-        Set<String> expectedDependencies = new HashSet<>(Arrays.asList("B", "C", "D"));
+        Set<String> expectedDependencies = new HashSet<>(List.of("B", "C", "D"));
 
         Assert.assertEquals(expectedDependencies, allDependencies);
     }

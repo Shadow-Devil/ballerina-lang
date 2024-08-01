@@ -20,7 +20,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,7 +41,7 @@ public class QueryExpressionContextTest extends CompletionTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList(
+        return List.of(
                 // TODO ST identifies the wrong token when there's a newline. Need to look at that.
                 "query_expr_ctx_join_clause_config6a.json",
                 // TODO: Suggestions in join's on clause should be limited to lists being joined

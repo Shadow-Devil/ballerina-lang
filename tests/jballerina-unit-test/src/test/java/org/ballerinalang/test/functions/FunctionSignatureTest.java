@@ -31,7 +31,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Test function signatures and calling with optional and named params.
@@ -452,7 +452,7 @@ public class FunctionSignatureTest {
                                                                 io.ballerina.runtime.api.values.BString c, long d,
                                                                 io.ballerina.runtime.api.values.BString e) {
         BTupleType tupleType = new BTupleType(
-                Arrays.asList(PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_FLOAT, PredefinedTypes.TYPE_STRING,
+                List.of(PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_FLOAT, PredefinedTypes.TYPE_STRING,
                               PredefinedTypes.TYPE_INT, PredefinedTypes.TYPE_STRING));
         ArrayValue tuple = new TupleValueImpl(tupleType);
         tuple.add(0, Long.valueOf(a));

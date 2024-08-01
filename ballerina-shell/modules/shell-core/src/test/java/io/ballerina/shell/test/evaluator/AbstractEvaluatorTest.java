@@ -29,7 +29,6 @@ import io.ballerina.shell.test.evaluator.base.TestInvoker;
 import io.ballerina.shell.test.evaluator.base.TestSession;
 import org.testng.Assert;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,7 +74,7 @@ public abstract class AbstractEvaluatorTest {
                 }
                 // Removing declarations
                 if (testCode.startsWith("/remove")) {
-                    List<String> names = Arrays.asList(testCode.split("\\s"));
+                    List<String> names = List.of(testCode.split("\\s"));
                     names.remove(0);
                     evaluator.delete(names);
                     continue;

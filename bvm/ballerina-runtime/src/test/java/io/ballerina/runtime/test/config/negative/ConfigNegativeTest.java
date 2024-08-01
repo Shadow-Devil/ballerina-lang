@@ -36,7 +36,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +84,7 @@ public class ConfigNegativeTest {
     public Object[][] configErrorCases() {
         MapType mapStringType = TypeCreator.createMapType(TYPE_STRING);
         Type incompatibleUnionType = new BIntersectionType(MODULE, new Type[]{},
-                new BUnionType(Arrays.asList(PredefinedTypes.TYPE_INT, mapStringType)), 0, true);
+                new BUnionType(List.of(PredefinedTypes.TYPE_INT, mapStringType)), 0, true);
         return new Object[][]{
                 // Required but not given
                 {new String[]{}, null, new HashMap<>(),

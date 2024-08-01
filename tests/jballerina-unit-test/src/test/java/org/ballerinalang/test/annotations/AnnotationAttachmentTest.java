@@ -57,7 +57,6 @@ import org.wso2.ballerinalang.compiler.tree.types.BLangTupleTypeNode;
 import org.wso2.ballerinalang.compiler.util.TypeTags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -258,7 +257,7 @@ public class AnnotationAttachmentTest {
     @Test
     public void testAnnotOnVar() {
         List<BLangAnnotationAttachment> attachments = new ArrayList<>();
-        List<String> targetVariables = new ArrayList<>(Arrays.asList("i", "intVar", "stringVar", "myA", "message",
+        List<String> targetVariables = new ArrayList<>(List.of("i", "intVar", "stringVar", "myA", "message",
                 "errorNo"));
         for (BLangVariable globalVar : compileResult.getAST().getGlobalVariables()) {
             if (targetVariables.contains(((BLangSimpleVariable) globalVar).getName().getValue())) {

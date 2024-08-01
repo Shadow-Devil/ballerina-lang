@@ -289,7 +289,7 @@ public class Values {
     }
 
     public static BMap<BString, Object> getRecordNegative(BString recordName) {
-        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        ArrayList<Integer> arrayList = new ArrayList<>(List.of(1, 2, 3, 4, 5));
         Map<String, Object> map = Map.ofEntries(
                 Map.entry("arrList", arrayList)
                                                );
@@ -297,7 +297,7 @@ public class Values {
     }
 
     public static BMap<BString, Object> getRecordNegative2(BString recordName) {
-        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        ArrayList<Integer> arrayList = new ArrayList<>(List.of(1, 2, 3, 4, 5));
         Map<String, Object> map = Map.ofEntries(
                 Map.entry("arrList", arrayList)
                                                );

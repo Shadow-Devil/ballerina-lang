@@ -54,8 +54,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -104,7 +104,7 @@ public class TestBalaProject {
         int noOfSrcDocuments = 0;
         int noOfTestDocuments = 0;
         final ArrayList<String> moduleNames = new ArrayList<>(
-                Arrays.asList("winery.services", "winery.storage", "winery"));
+                List.of("winery.services", "winery.storage", "winery"));
         final Collection<ModuleId> moduleIds = currentPackage.moduleIds();
         Assert.assertEquals(moduleIds.size(), 3);
 

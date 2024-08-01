@@ -73,7 +73,6 @@ import org.wso2.ballerinalang.compiler.util.TypeTags;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -151,7 +150,7 @@ public class BallerinaSemanticModel implements SemanticModel {
                                                          position.line(), position.line(),
                                                          position.offset(), position.offset());
 
-        Set<DiagnosticState> statesSet = new HashSet<>(Arrays.asList(states));
+        Set<DiagnosticState> statesSet = new HashSet<>(List.of(states));
         Set<Symbol> compiledSymbols = new HashSet<>();
         for (Map.Entry<Name, List<Scope.ScopeEntry>> entry : scopeSymbols.entrySet()) {
             Name name = entry.getKey();

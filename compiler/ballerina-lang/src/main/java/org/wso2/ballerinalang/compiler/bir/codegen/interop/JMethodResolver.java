@@ -505,7 +505,7 @@ class JMethodResolver {
         if (pathParamSymbols.isEmpty()) {
             return;
         }
-        List<BType> paramTypes = new ArrayList<>(Arrays.asList(jMethodRequest.bParamTypes));
+        List<BType> paramTypes = new ArrayList<>(List.of(jMethodRequest.bParamTypes));
         int initialPathParamIndex = paramTypes.indexOf(pathParamSymbols.get(0).type);
         for (BVarSymbol param : pathParamSymbols) {
             paramTypes.remove(param.type);
@@ -518,7 +518,7 @@ class JMethodResolver {
     }
 
     private void bundleFunctionParams(JMethodRequest jMethodRequest, JMethod jMethod) {
-        List<BType> paramTypes = new ArrayList<>(Arrays.asList(jMethodRequest.bParamTypes));
+        List<BType> paramTypes = new ArrayList<>(List.of(jMethodRequest.bParamTypes));
         if (jMethodRequest.bFuncParamCount > jMethodRequest.pathParamCount) {
             paramTypes.subList(jMethodRequest.pathParamCount, jMethodRequest.bFuncParamCount).clear();
         }
@@ -985,7 +985,7 @@ class JMethodResolver {
                 throw new JInteropException(DiagnosticErrorCode.INSTANTIATION_ERROR,
                         "'" + clazz.getName() + "' is abstract, and cannot be instantiated");
             }
-            return Arrays.asList(getConstructors(clazz));
+            return List.of(getConstructors(clazz));
         } else {
             List<Executable> list = new ArrayList<>();
             for (Method method : getMethods(clazz)) {

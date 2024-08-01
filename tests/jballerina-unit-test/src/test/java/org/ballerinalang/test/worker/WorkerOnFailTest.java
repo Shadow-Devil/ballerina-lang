@@ -26,7 +26,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static org.ballerinalang.test.BAssertUtil.validateError;
 
@@ -43,7 +43,7 @@ public class WorkerOnFailTest {
     @BeforeClass
     public void setup() {
         result = BCompileUtil.compile("test-src/workers/worker-on-fail.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
         resultNegative = BCompileUtil.compile("test-src/workers/worker-on-fail-negative.bal");
     }
 

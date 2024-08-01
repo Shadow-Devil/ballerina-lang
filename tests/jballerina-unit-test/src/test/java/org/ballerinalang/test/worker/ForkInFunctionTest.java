@@ -25,7 +25,7 @@ import org.ballerinalang.test.CompileResult;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Test cases for usages of fork in functions.
@@ -56,7 +56,7 @@ public class ForkInFunctionTest {
     @Test(description = "Test Fork With Workers in same function")
     public void testForkWithWorkersInSameFunction() {
         CompileResult result = BCompileUtil.compile("test-src/workers/fork-workers-under-same-funtion.bal");
-        Assert.assertEquals(result.getErrorCount(), 0, Arrays.asList(result.getDiagnostics()).toString());
+        Assert.assertEquals(result.getErrorCount(), 0, List.of(result.getDiagnostics()).toString());
         Object[] args = {};
         Object returns = BRunUtil.invoke(result, "forkWithWorkers", args);
         Assert.assertEquals(returns.getClass(), Long.class);

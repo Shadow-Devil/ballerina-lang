@@ -58,7 +58,6 @@ import org.eclipse.lsp4j.MarkupContent;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -403,7 +402,7 @@ public final class FunctionCompletionItemBuilder {
                 + CommonUtil.LINE_SEPARATOR + "}");
         completionItem.setLabel("public main function");
         completionItem.setFilterText(SnippetGenerator.generateFilterText
-                (Arrays.asList(ItemResolverConstants.PUBLIC_KEYWORD, ItemResolverConstants.FUNCTION, "main")));
+                (List.of(ItemResolverConstants.PUBLIC_KEYWORD, ItemResolverConstants.FUNCTION, "main")));
         completionItem.setKind(CompletionItemKind.Snippet);
         completionItem.setDetail(ItemResolverConstants.SNIPPET_TYPE);
         return new StaticCompletionItem(context, completionItem, StaticCompletionItem.Kind.MAIN_FUNCTION);

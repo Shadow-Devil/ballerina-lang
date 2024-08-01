@@ -44,7 +44,6 @@ import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -73,7 +72,7 @@ public class BallerinaObjectTypeBuilder implements TypeBuilder.OBJECT {
     @Override
     public TypeBuilder.OBJECT withQualifier(Qualifier... qualifiers) {
         this.qualifiers.clear();
-        this.qualifiers.addAll(Arrays.asList(qualifiers));
+        this.qualifiers.addAll(List.of(qualifiers));
 
         return this;
     }
@@ -81,7 +80,7 @@ public class BallerinaObjectTypeBuilder implements TypeBuilder.OBJECT {
     @Override
     public TypeBuilder.OBJECT withFields(OBJECT_FIELD... fields) {
         objectFieldList.clear();
-        objectFieldList.addAll(Arrays.asList(fields));
+        objectFieldList.addAll(List.of(fields));
 
         return this;
     }
@@ -89,7 +88,7 @@ public class BallerinaObjectTypeBuilder implements TypeBuilder.OBJECT {
     @Override
     public TypeBuilder.OBJECT withMethods(OBJECT_METHOD... methods) {
         objectMethodList.clear();
-        objectMethodList.addAll(getObjectMethods(Arrays.asList(methods)));
+        objectMethodList.addAll(getObjectMethods(List.of(methods)));
 
         return this;
     }
@@ -97,7 +96,7 @@ public class BallerinaObjectTypeBuilder implements TypeBuilder.OBJECT {
     @Override
     public TypeBuilder.OBJECT withTypeInclusions(TypeReferenceTypeSymbol... inclusions) {
         typeInclusions.clear();
-        typeInclusions.addAll(Arrays.asList(inclusions));
+        typeInclusions.addAll(List.of(inclusions));
 
         return this;
     }
@@ -251,7 +250,7 @@ public class BallerinaObjectTypeBuilder implements TypeBuilder.OBJECT {
                 this.qualifiers = new ArrayList<>();
             }
 
-            this.qualifiers.addAll(Arrays.asList(qualifiers));
+            this.qualifiers.addAll(List.of(qualifiers));
 
             return this;
         }

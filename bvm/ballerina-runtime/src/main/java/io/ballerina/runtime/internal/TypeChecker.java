@@ -1705,7 +1705,7 @@ public class TypeChecker {
     }
     
     private static List<MethodType> getAllFunctionsList(BObjectType objectType) {
-        List<MethodType> functionList = new ArrayList<>(Arrays.asList(objectType.getMethods()));
+        List<MethodType> functionList = new ArrayList<>(List.of(objectType.getMethods()));
         if (objectType.getTag() == TypeTags.SERVICE_TAG ||
                 (objectType.flags & SymbolFlags.CLIENT) == SymbolFlags.CLIENT) {
             Collections.addAll(functionList, ((BNetworkObjectType) objectType).getResourceMethods());

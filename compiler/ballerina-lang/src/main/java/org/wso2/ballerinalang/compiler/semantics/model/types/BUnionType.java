@@ -26,9 +26,9 @@ import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.compiler.util.TypeTags;
 import org.wso2.ballerinalang.util.Flags;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
@@ -236,7 +236,7 @@ public class BUnionType extends BType implements UnionType {
      */
     public static BUnionType create(BTypeSymbol tsymbol, BType... types) {
         LinkedHashSet<BType> memberTypes = new LinkedHashSet<>(types.length);
-        memberTypes.addAll(Arrays.asList(types));
+        memberTypes.addAll(List.of(types));
         return create(tsymbol, memberTypes);
     }
 

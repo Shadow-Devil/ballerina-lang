@@ -42,7 +42,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -145,7 +144,7 @@ public abstract class AbstractLSTest {
         Environment environment = EnvironmentBuilder.getBuilder().build();
         BallerinaDistribution ballerinaDistribution = BallerinaDistribution.from(environment);
         PackageRepository packageRepository = ballerinaDistribution.packageRepository();
-        List<String> skippedLangLibs = Arrays.asList("lang.annotations", "lang.__internal", "lang.query");
+        List<String> skippedLangLibs = List.of("lang.annotations", "lang.__internal", "lang.query");
         return lsPackageLoader.checkAndResolvePackagesFromRepository(packageRepository,
                 skippedLangLibs, Collections.emptySet());
     }

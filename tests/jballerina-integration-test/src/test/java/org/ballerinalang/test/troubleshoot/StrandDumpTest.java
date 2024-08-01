@@ -33,7 +33,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,7 +123,7 @@ public class StrandDumpTest extends BaseTest {
         String tempBalHome = new File("src" + File.separator + "test" + File.separator +
                 "resources" + File.separator + "ballerina.home").getAbsolutePath();
         runCmdSet.add("-Dballerina.home=" + tempBalHome);
-        runCmdSet.addAll(Arrays.asList("-jar", jarPath));
+        runCmdSet.addAll(List.of("-jar", jarPath));
 
         ProcessBuilder processBuilder = new ProcessBuilder(runCmdSet).directory(new File(commandDir));
         startProcessAndVerifyStrandDump(processBuilder, envProperties, expectedStrandDumpFilePath,

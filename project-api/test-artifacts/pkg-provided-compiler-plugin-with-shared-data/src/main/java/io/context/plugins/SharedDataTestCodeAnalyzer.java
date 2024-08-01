@@ -30,7 +30,7 @@ import io.ballerina.tools.text.LinePosition;
 import io.ballerina.tools.text.LineRange;
 import io.ballerina.tools.text.TextRange;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,7 +64,7 @@ public class SharedDataTestCodeAnalyzer extends CodeAnalyzer {
                             new NullLocation()));
                 }
             }
-        }, Arrays.asList(SyntaxKind.FUNCTION_DEFINITION));
+        }, List.of(SyntaxKind.FUNCTION_DEFINITION));
     }
 
     private static class NullLocation implements Location {

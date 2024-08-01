@@ -22,7 +22,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -51,6 +50,6 @@ public class ServiceBodyTest extends CompletionTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList("config1.json", "config2.json", "config3.json");
+        return List.of("config1.json", "config2.json", "config3.json");
     }
 }

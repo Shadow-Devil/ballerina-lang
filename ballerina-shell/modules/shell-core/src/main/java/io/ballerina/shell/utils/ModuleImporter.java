@@ -33,7 +33,6 @@ import io.ballerina.shell.Diagnostic;
 import org.wso2.ballerinalang.compiler.util.Names;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -51,7 +50,7 @@ public class ModuleImporter {
     private final List<Package> packageList;
     private static final String UNDEFINED_MODULE = "undefined module";
     private static final String LANG = "lang";
-    private static final List<String> SKIPPED_LIBS = Arrays.asList("lang.annotations", "lang.__internal", "lang.query");
+    private static final List<String> SKIPPED_LIBS = List.of("lang.annotations", "lang.__internal", "lang.query");
 
     public ModuleImporter() {
         packageList = getPackagesFromDistRepo();

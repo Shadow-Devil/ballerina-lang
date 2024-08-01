@@ -3758,7 +3758,7 @@ public abstract class TreeModifier extends NodeTransformer<Node> {
             return nodeList;
         }
 
-        STNode stNodeList = STNodeFactory.createNodeList(java.util.Arrays.asList(newSTNodes));
+        STNode stNodeList = STNodeFactory.createNodeList(java.util.List.of(newSTNodes));
         return nodeListCreator.apply(stNodeList.createUnlinkedFacade());
     }
 
@@ -3784,7 +3784,7 @@ public abstract class TreeModifier extends NodeTransformer<Node> {
             return nodeList;
         }
 
-        STNode stNodeList = STNodeFactory.createNodeList(java.util.Arrays.asList(newSTNodes));
+        STNode stNodeList = STNodeFactory.createNodeList(java.util.List.of(newSTNodes));
         return nodeListCreator.apply(stNodeList.createUnlinkedFacade());
     }
 

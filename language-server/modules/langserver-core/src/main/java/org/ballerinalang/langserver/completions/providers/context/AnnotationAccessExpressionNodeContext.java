@@ -43,7 +43,6 @@ import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.InsertTextFormat;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -146,7 +145,7 @@ public class AnnotationAccessExpressionNodeContext extends AbstractCompletionPro
                         .map(TypeSymbol::typeKind)
                         .toList();
                 if (typeDescKinds.contains(TypeDescKind.ANY) || !typeDescKinds.contains(TypeDescKind.ANYDATA)) {
-                    annotationAttachPoints.addAll(Arrays.asList(
+                    annotationAttachPoints.addAll(List.of(
                             AnnotationAttachPoint.TYPE,
                             AnnotationAttachPoint.CLASS,
                             AnnotationAttachPoint.FUNCTION,
@@ -156,7 +155,7 @@ public class AnnotationAccessExpressionNodeContext extends AbstractCompletionPro
                 break;
             case ANY:
             case ANYDATA:
-                annotationAttachPoints.addAll(Arrays.asList(
+                annotationAttachPoints.addAll(List.of(
                         AnnotationAttachPoint.TYPE,
                         AnnotationAttachPoint.CLASS,
                         AnnotationAttachPoint.FUNCTION,

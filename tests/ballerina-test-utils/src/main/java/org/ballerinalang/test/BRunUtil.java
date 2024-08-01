@@ -339,7 +339,7 @@ public class BRunUtil {
             actualArgs.add(index++, classPathString);
         }
         actualArgs.add(index, initClassName);
-        actualArgs.addAll(Arrays.asList(args));
+        actualArgs.addAll(List.of(args));
 
         try {
             final Runtime runtime = Runtime.getRuntime();

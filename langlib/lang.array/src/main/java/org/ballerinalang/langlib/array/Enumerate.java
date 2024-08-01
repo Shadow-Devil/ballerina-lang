@@ -30,7 +30,7 @@ import io.ballerina.runtime.api.utils.TypeUtils;
 import io.ballerina.runtime.api.values.BArray;
 import org.ballerinalang.langlib.array.utils.GetFunction;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static org.ballerinalang.langlib.array.utils.ArrayUtils.createOpNotSupportedError;
 
@@ -55,14 +55,14 @@ public class Enumerate {
 
         switch (arrType.getTag()) {
             case TypeTags.ARRAY_TAG:
-                elemType = TypeCreator.createTupleType(Arrays.asList(PredefinedTypes.TYPE_INT, arr.getElementType()));
+                elemType = TypeCreator.createTupleType(List.of(PredefinedTypes.TYPE_INT, arr.getElementType()));
                 getFn = BArray::get;
                 break;
             case TypeTags.TUPLE_TAG:
                 TupleType tupleType = (TupleType) arrType;
                 UnionType tupElemType = TypeCreator.createUnionType(tupleType.getTupleTypes(),
                                                                     tupleType.getTypeFlags());
-                elemType = TypeCreator.createTupleType(Arrays.asList(PredefinedTypes.TYPE_INT, tupElemType));
+                elemType = TypeCreator.createTupleType(List.of(PredefinedTypes.TYPE_INT, tupElemType));
                 getFn = BArray::getRefValue;
                 break;
             default:

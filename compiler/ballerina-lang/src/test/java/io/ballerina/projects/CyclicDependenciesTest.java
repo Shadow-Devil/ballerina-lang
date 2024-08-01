@@ -27,7 +27,6 @@ import org.testng.annotations.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -73,37 +72,37 @@ public class CyclicDependenciesTest {
     private Object[][] provideCyclicDependencies() {
         return new Object[][]{
                 {"case001", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
-                        Arrays.asList(PACKAGE_01, PACKAGE_04, PACKAGE_01)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
+                        List.of(PACKAGE_01, PACKAGE_04, PACKAGE_01)
                 )},
                 {"case002", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
-                        Arrays.asList(PACKAGE_04, PACKAGE_05, PACKAGE_04),
-                        Arrays.asList(PACKAGE_01, PACKAGE_04, PACKAGE_05, PACKAGE_03, PACKAGE_01)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
+                        List.of(PACKAGE_04, PACKAGE_05, PACKAGE_04),
+                        List.of(PACKAGE_01, PACKAGE_04, PACKAGE_05, PACKAGE_03, PACKAGE_01)
                 )},
                 {"case003", List.of(
-                        Arrays.asList(PACKAGE_04, PACKAGE_02, PACKAGE_04)
+                        List.of(PACKAGE_04, PACKAGE_02, PACKAGE_04)
                 )},
                 {"case004", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_05, PACKAGE_01),
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_06, PACKAGE_01)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_05, PACKAGE_01),
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_06, PACKAGE_01)
                 )},
                 {"case005", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_01)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_01)
                 )},
                 {"case006", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
-                        Arrays.asList(PACKAGE_02, PACKAGE_04, PACKAGE_03, PACKAGE_02),
-                        Arrays.asList(PACKAGE_01, PACKAGE_03, PACKAGE_02, PACKAGE_04, PACKAGE_01)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_04, PACKAGE_01),
+                        List.of(PACKAGE_02, PACKAGE_04, PACKAGE_03, PACKAGE_02),
+                        List.of(PACKAGE_01, PACKAGE_03, PACKAGE_02, PACKAGE_04, PACKAGE_01)
                 )},
                 {"case007", List.of(
-                        Arrays.asList(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
-                        Arrays.asList(PACKAGE_01, PACKAGE_05, PACKAGE_02, PACKAGE_03, PACKAGE_01),
-                        Arrays.asList(PACKAGE_02, PACKAGE_03, PACKAGE_02),
-                        Arrays.asList(PACKAGE_02, PACKAGE_03, PACKAGE_04, PACKAGE_05, PACKAGE_02),
-                        Arrays.asList(PACKAGE_02, PACKAGE_03, PACKAGE_06, PACKAGE_04, PACKAGE_05, PACKAGE_02)
+                        List.of(PACKAGE_01, PACKAGE_02, PACKAGE_03, PACKAGE_01),
+                        List.of(PACKAGE_01, PACKAGE_05, PACKAGE_02, PACKAGE_03, PACKAGE_01),
+                        List.of(PACKAGE_02, PACKAGE_03, PACKAGE_02),
+                        List.of(PACKAGE_02, PACKAGE_03, PACKAGE_04, PACKAGE_05, PACKAGE_02),
+                        List.of(PACKAGE_02, PACKAGE_03, PACKAGE_06, PACKAGE_04, PACKAGE_05, PACKAGE_02)
                 )}
         };
     }

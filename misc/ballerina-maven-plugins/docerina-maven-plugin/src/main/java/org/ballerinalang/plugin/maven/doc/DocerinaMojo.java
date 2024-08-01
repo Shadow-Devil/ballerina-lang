@@ -118,7 +118,7 @@ public class DocerinaMojo extends AbstractMojo {
             SourceDirectory srcDirectory = new FileSystemProjectDirectory(sourceRootPath);
             sources = srcDirectory.getSourcePackageNames();
         } else {
-            sources = Arrays.asList(sourceDir.split(","));
+            sources = List.of(sourceDir.split(","));
         }
 
         try {

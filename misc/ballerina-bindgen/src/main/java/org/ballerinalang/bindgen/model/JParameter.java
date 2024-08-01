@@ -20,7 +20,6 @@ package org.ballerinalang.bindgen.model;
 import org.ballerinalang.bindgen.utils.BindgenEnv;
 
 import java.lang.reflect.Parameter;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.ballerinalang.bindgen.utils.BindgenConstants.BALLERINA_NILLABLE_STRING;
@@ -120,7 +119,7 @@ public class JParameter {
 
     JParameter(Parameter parameter, Class parentClass, BindgenEnv env) {
         this(parameter.getType(), parentClass, env);
-        List<String> reservedWords = Arrays.asList(BALLERINA_RESERVED_WORDS);
+        List<String> reservedWords = List.of(BALLERINA_RESERVED_WORDS);
         fieldName = parameter.getName();
         if (reservedWords.contains(fieldName)) {
             fieldName = "'" + fieldName;

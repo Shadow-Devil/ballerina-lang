@@ -86,7 +86,6 @@ import org.ballerinalang.bindgen.model.JMethod;
 import org.ballerinalang.bindgen.model.JParameter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -539,7 +538,7 @@ class BindgenNodeFactory {
         statementNodes.add(getExternalFunctionCallStatement(HANDLE, jField));
         statementNodes.add(createReturnStatementNode(createTypeCastExpressionNode(jField.getReturnType(),
                 createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                        new LinkedList<>(Arrays.asList("externalObj", "\"" + jField.getFieldType() + "\"")))))));
+                        List.of("externalObj", "\"" + jField.getFieldType() + "\""))))));
 
         return statementNodes;
     }
@@ -555,7 +554,7 @@ class BindgenNodeFactory {
                 createTypedBindingPatternNode("handle[]", "anyObj"),
                 createTypeCastExpressionNode("handle[]",
                         createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                                new LinkedList<>(Arrays.asList("externalObj", "\"handle\"")))))));
+                                List.of("externalObj", "\"handle\""))))));
         statementNodes.add(createVariableDeclarationNode(
                 createTypedBindingPatternNode("int", "count"),
                 createMethodCallExpressionNode(createSimpleNameReferenceNode("anyObj"), "length", new LinkedList<>())));
@@ -579,7 +578,7 @@ class BindgenNodeFactory {
                 createCheckExpressionNode(
                     createFunctionCallExpressionNode(
                         "jarrays:fromHandle",
-                        new LinkedList<>(Arrays.asList("externalObj", "\"string\""))
+                        List.of("externalObj", "\"string\"")
                     )
                 )
             ))
@@ -718,7 +717,7 @@ class BindgenNodeFactory {
                 createElseBlockNode(createBlockStatementNode(AbstractNodeFactory.createNodeList(
                         createReturnStatementNode(createTypeCastExpressionNode(jMethod.getReturnType(),
                                 createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                                        new LinkedList<>(Arrays.asList("externalObj", "\""
+                                        new LinkedList<>(List.of("externalObj", "\""
                                                 + jMethod.getReturnTypeJava() + "\""))))))
                 )))));
 
@@ -740,7 +739,7 @@ class BindgenNodeFactory {
                                 createTypedBindingPatternNode("handle[]", "anyObj"),
                                 createTypeCastExpressionNode("handle[]",
                                         createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                                                new LinkedList<>(Arrays.asList("externalObj", "\"handle\"")))))),
+                                                new LinkedList<>(List.of("externalObj", "\"handle\"")))))),
                         createVariableDeclarationNode(
                                 createTypedBindingPatternNode("int", "count"),
                                 createMethodCallExpressionNode(createSimpleNameReferenceNode("anyObj"),
@@ -780,7 +779,7 @@ class BindgenNodeFactory {
                                         createCheckExpressionNode(
                                             createFunctionCallExpressionNode(
                                                     "jarrays:fromHandle",
-                                                    new LinkedList<>(Arrays.asList("externalObj", "\"string\""))
+                                                    List.of("externalObj", "\"string\"")
                                             )
                                         )
                                     )
@@ -868,7 +867,7 @@ class BindgenNodeFactory {
                 createTypedBindingPatternNode("handle[]", "anyObj"),
                 createTypeCastExpressionNode("handle[]",
                         createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                        new LinkedList<>(Arrays.asList("externalObj", "\"handle\"")))))));
+                        List.of("externalObj", "\"handle\""))))));
         statementNodes.add(createVariableDeclarationNode(
                 createTypedBindingPatternNode("int", "count"),
                 createMethodCallExpressionNode(createSimpleNameReferenceNode("anyObj"), "length", new LinkedList<>())));
@@ -981,7 +980,7 @@ class BindgenNodeFactory {
                 //   return <string[]> check jarrays:fromHandle(externalObj, "string");
                 createReturnStatementNode(createTypeCastExpressionNode("string[]",
                         createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                                        new LinkedList<>(Arrays.asList("externalObj", "\"string\""))
+                                        List.of("externalObj", "\"string\"")
                                 )
                         )
                 ))
@@ -1008,7 +1007,7 @@ class BindgenNodeFactory {
         statementNodes.add(getExternalFunctionCallStatement(HANDLE, jMethod));
         statementNodes.add(createReturnStatementNode(createTypeCastExpressionNode(jMethod.getReturnType(),
                 createCheckExpressionNode(createFunctionCallExpressionNode("jarrays:fromHandle",
-                        new LinkedList<>(Arrays.asList("externalObj", "\"" + jMethod.getReturnTypeJava() + "\"")))))));
+                        List.of("externalObj", "\"" + jMethod.getReturnTypeJava() + "\""))))));
 
         return statementNodes;
     }
@@ -1055,8 +1054,8 @@ class BindgenNodeFactory {
                         createTypedBindingPatternNode(exceptionName, "e"),
                         createErrorConstructorExpressionNode(
                                 createSimpleNameReferenceNode(exceptionName),
-                                new LinkedList<>(Arrays.asList(exceptionConstName, "externalObj",
-                                        "message = externalObj.message()")))
+                                List.of(exceptionConstName, "externalObj",
+                                        "message = externalObj.message()"))
                 ),
                 createReturnStatementNode(createSimpleNameReferenceNode("e")))
         );

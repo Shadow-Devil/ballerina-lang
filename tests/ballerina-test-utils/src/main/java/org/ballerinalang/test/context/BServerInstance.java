@@ -497,8 +497,8 @@ public class BServerInstance implements BServer {
             String tempBalHome = new File("src" + File.separator + "test" + File.separator +
                                                   "resources" + File.separator + "ballerina.home").getAbsolutePath();
             runCmdSet.add("-Dballerina.home=" + tempBalHome);
-            runCmdSet.addAll(Arrays.asList("-jar", jarPath));
-            runCmdSet.addAll(Arrays.asList(args));
+            runCmdSet.addAll(List.of("-jar", jarPath));
+            runCmdSet.addAll(List.of(args));
 
             ProcessBuilder processBuilder = new ProcessBuilder(runCmdSet).directory(commandDir);
             Map<String, String> env = processBuilder.environment();

@@ -39,7 +39,6 @@ import io.ballerina.runtime.internal.values.RegExpTerm;
 import io.ballerina.runtime.internal.values.RegExpValue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -352,7 +351,7 @@ public class TreeBuilder {
             RegExpCharSet reCharSet = readRegCharSet();
             charSetAtoms.add(reCharSetRange);
             if (reCharSet.getCharSetAtoms().length > 0) {
-                charSetAtoms.addAll(Arrays.asList(reCharSet.getCharSetAtoms()));
+                charSetAtoms.addAll(List.of(reCharSet.getCharSetAtoms()));
             }
 
             return new RegExpCharSet(charSetAtoms.toArray());
@@ -360,7 +359,7 @@ public class TreeBuilder {
         charSetAtoms.add(startReCharSetAtom);
         RegExpCharSet reCharSetNoDash = readCharSetNoDash(nextToken);
         if (reCharSetNoDash.getCharSetAtoms().length > 0) {
-            charSetAtoms.addAll(Arrays.asList(reCharSetNoDash.getCharSetAtoms()));
+            charSetAtoms.addAll(List.of(reCharSetNoDash.getCharSetAtoms()));
         }
         return new RegExpCharSet(charSetAtoms.toArray());
     }
@@ -389,14 +388,14 @@ public class TreeBuilder {
             RegExpCharSet reCharSet = readRegCharSet();
             charSetAtoms.add(reCharSetRange);
             if (reCharSet.getCharSetAtoms().length > 0) {
-                charSetAtoms.addAll(Arrays.asList(reCharSet.getCharSetAtoms()));
+                charSetAtoms.addAll(List.of(reCharSet.getCharSetAtoms()));
             }
             return new RegExpCharSet(charSetAtoms.toArray());
         }
         RegExpCharSet reCharSetNoDash = readCharSetNoDash(nextToken);
         charSetAtoms.add(startReCharSetAtomNoDash);
         if (reCharSetNoDash.getCharSetAtoms().length > 0) {
-            charSetAtoms.addAll(Arrays.asList(reCharSetNoDash.getCharSetAtoms()));
+            charSetAtoms.addAll(List.of(reCharSetNoDash.getCharSetAtoms()));
         }
         return new RegExpCharSet(charSetAtoms.toArray());
     }

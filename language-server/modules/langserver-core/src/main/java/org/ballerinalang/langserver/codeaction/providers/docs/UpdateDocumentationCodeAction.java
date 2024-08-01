@@ -36,7 +36,6 @@ import org.eclipse.lsp4j.CodeActionKind;
 import org.eclipse.lsp4j.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +50,7 @@ public class UpdateDocumentationCodeAction implements DiagnosticBasedCodeActionP
 
     public static final String NAME = "Update Documentation";
 
-    private static final List<String> DIAGNOSTIC_IDS = Arrays.asList(
+    private static final List<String> DIAGNOSTIC_IDS = List.of(
             DiagnosticWarningCode.UNDOCUMENTED_PARAMETER.diagnosticId(),
             DiagnosticWarningCode.NO_SUCH_DOCUMENTABLE_PARAMETER.diagnosticId(),
             DiagnosticWarningCode.PARAMETER_ALREADY_DOCUMENTED.diagnosticId(),
@@ -115,7 +114,7 @@ public class UpdateDocumentationCodeAction implements DiagnosticBasedCodeActionP
         CommandArgument docUriArg = CommandArgument.from(CommandConstants.ARG_KEY_DOC_URI, docUri);
         CommandArgument lineStart = CommandArgument.from(CommandConstants.ARG_KEY_NODE_RANGE,
                 PositionUtil.toRange(node.lineRange()));
-        List<Object> args = new ArrayList<>(Arrays.asList(docUriArg, lineStart));
+        List<Object> args = new ArrayList<>(List.of(docUriArg, lineStart));
 
         String commandTitle = CommandConstants.UPDATE_DOCUMENTATION_TITLE;
         Command command = new Command(commandTitle, UpdateDocumentationExecutor.COMMAND, args);

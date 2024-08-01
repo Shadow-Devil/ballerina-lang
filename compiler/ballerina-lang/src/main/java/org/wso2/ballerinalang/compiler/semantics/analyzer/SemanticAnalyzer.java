@@ -223,7 +223,6 @@ import org.wso2.ballerinalang.util.AttachPoints;
 import org.wso2.ballerinalang.util.Flags;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1474,7 +1473,7 @@ public class SemanticAnalyzer extends SimpleBLangNodeAnalyzer<SemanticAnalyzer.A
             analyzeNode(varNode.typeNode, data);
         }
 
-        List<AttachPoint.Point> attachPointsList = Arrays.asList(attachPoints);
+        List<AttachPoint.Point> attachPointsList = List.of(attachPoints);
         for (BLangAnnotationAttachment annotationAttachment : varNode.annAttachments) {
             annotationAttachment.attachPoints.addAll(attachPointsList);
             annotationAttachment.accept(this, data);

@@ -24,7 +24,6 @@ import org.testng.annotations.Test;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -66,12 +65,12 @@ public class RemotePackageRepositoryTests {
 
     // - Data returned from central client
     // -- dependency package
-    Dependency io132 = new Dependency("ballerina", "io", "1.3.2", Arrays.asList());
-    Dependency http122d = new Dependency("ballerina", "http", "1.2.2", Arrays.asList(io132));
+    Dependency io132 = new Dependency("ballerina", "io", "1.3.2", List.of());
+    Dependency http122d = new Dependency("ballerina", "http", "1.2.2", List.of(io132));
     // -- direct imports
-    Package http122 = new Package("ballerina", "http", "1.2.2", Arrays.asList(io132));
-    Package covid154 = new Package("ballerinax", "covid", "1.5.7", Arrays.asList(io132, http122d));
-    Package smtp = new Package("ballerinax", "smtp", "1.0.0", Arrays.asList());
+    Package http122 = new Package("ballerina", "http", "1.2.2", List.of(io132));
+    Package covid154 = new Package("ballerinax", "covid", "1.5.7", List.of(io132, http122d));
+    Package smtp = new Package("ballerinax", "smtp", "1.0.0", List.of());
     // File system responses
     PackageMetadataResponse fileHttp120 = PackageMetadataResponse
             .from(resHttp120, http121, DependencyGraph.emptyGraph());
@@ -89,13 +88,13 @@ public class RemotePackageRepositoryTests {
     public void testHappyPath() throws CentralClientException {
         // Mock API Calls
         // Mock CentralClient call
-        PackageResolutionResponse response = PackageResolutionResponse.from(Arrays.asList(http122, covid154),
-                Arrays.asList());
+        PackageResolutionResponse response = PackageResolutionResponse.from(List.of(http122, covid154),
+                List.of());
         when(centralAPIClient.resolveDependencies(any(PackageResolutionRequest.class),
                 anyString(), anyString())).thenReturn(response);
         // Mock response from file system
         when(fileSystemRepository.getPackageMetadata(anyList(), any(ResolutionOptions.class)))
-                .thenReturn(Arrays.asList(fileHttp120, fileCovid159));
+                .thenReturn(List.of(fileHttp120, fileCovid159));
         // Mock getLatest response from FileSystemRepository
         when(fileSystemRepository.getLatest(http121.version(), PackageVersion.from(http122.version()))).thenReturn(
                 PackageVersion.from(http122.version()));
@@ -105,7 +104,7 @@ public class RemotePackageRepositoryTests {
         // Test call to remote repository
         List<PackageMetadataResponse> resolutionResponseDescriptors = new ArrayList<>(
                 remotePackageRepository.getPackageMetadata(
-                        Arrays.asList(resHttp120, resCovid156), offlineFalseOption));
+                        List.of(resHttp120, resCovid156), offlineFalseOption));
 
         // response should return resolution for same number of requests
         Assert.assertEquals(resolutionResponseDescriptors.size(), 2);
@@ -134,19 +133,19 @@ public class RemotePackageRepositoryTests {
     public void testUnresolvedCases() throws CentralClientException {
         // Mock API Calls
         // Mock CentralClient call
-        PackageResolutionResponse response = PackageResolutionResponse.from(Arrays.asList(http122),
-                Arrays.asList(covid154, smtp));
+        PackageResolutionResponse response = PackageResolutionResponse.from(List.of(http122),
+                List.of(covid154, smtp));
         when(centralAPIClient.resolveDependencies(any(PackageResolutionRequest.class),
                 anyString(), anyString())).thenReturn(response);
         // Mock response from file system
         when(fileSystemRepository.getPackageMetadata(anyList(), any(ResolutionOptions.class)))
-                .thenReturn(Arrays.asList(PackageMetadataResponse.createUnresolvedResponse(resHttp120),
+                .thenReturn(List.of(PackageMetadataResponse.createUnresolvedResponse(resHttp120),
                         fileCovid159, fileSmtp130));
 
         // Test call to remote repository
         List<PackageMetadataResponse> resolutionResponseDescriptors = new ArrayList<>(
                 remotePackageRepository.getPackageMetadata(
-                        Arrays.asList(resHttp120, resCovid156, resSmtp130), offlineFalseOption));
+                        List.of(resHttp120, resCovid156, resSmtp130), offlineFalseOption));
 
         // response should return resolution for same number of requests
         Assert.assertEquals(resolutionResponseDescriptors.size(), 3);
@@ -180,21 +179,21 @@ public class RemotePackageRepositoryTests {
     public void testOfflineRequests() throws CentralClientException {
         // Mock API Calls
         // Mock CentralClient call
-        PackageResolutionResponse response = PackageResolutionResponse.from(Arrays.asList(http122, covid154),
-                Arrays.asList());
+        PackageResolutionResponse response = PackageResolutionResponse.from(List.of(http122, covid154),
+                List.of());
         when(centralAPIClient.resolveDependencies(any(PackageResolutionRequest.class),
                 anyString(), anyString()))
                 .thenThrow(new AssertionError("Client get called in offline mode"));
         // Mock response from file system
         when(fileSystemRepository.getPackageMetadata(anyList(), any(ResolutionOptions.class)))
-                .thenReturn(Arrays.asList(fileHttp120, fileCovid159));
+                .thenReturn(List.of(fileHttp120, fileCovid159));
 
         // Test call to remote repository
         ResolutionRequest resHttp120Offline = ResolutionRequest.from(http120, PackageDependencyScope.DEFAULT);
         ResolutionRequest resCovid156Offline = ResolutionRequest.from(covid156, PackageDependencyScope.DEFAULT);
         List<PackageMetadataResponse> resolutionResponseDescriptors = new ArrayList<>(
                 remotePackageRepository.getPackageMetadata(
-                        Arrays.asList(resHttp120Offline, resCovid156Offline), offlineTrueOption));
+                        List.of(resHttp120Offline, resCovid156Offline), offlineTrueOption));
 
         // response should return resolution for same number of requests
         Assert.assertEquals(resolutionResponseDescriptors.size(), 2);
@@ -214,18 +213,18 @@ public class RemotePackageRepositoryTests {
     public void testClientException() throws CentralClientException {
         // Mock API Calls
         // Mock CentralClient call
-        PackageResolutionResponse response = PackageResolutionResponse.from(Arrays.asList(http122, covid154),
-                Arrays.asList());
+        PackageResolutionResponse response = PackageResolutionResponse.from(List.of(http122, covid154),
+                List.of());
         when(centralAPIClient.resolveDependencies(any(PackageResolutionRequest.class),
                 anyString(), anyString())).thenThrow(new ConnectionErrorException("500 Error"));
         // Mock response from file system
         when(fileSystemRepository.getPackageMetadata(anyList(), any(ResolutionOptions.class)))
-                .thenReturn(Arrays.asList(fileHttp120, fileCovid159));
+                .thenReturn(List.of(fileHttp120, fileCovid159));
 
         // Test call to remote repository
         List<PackageMetadataResponse> resolutionResponseDescriptors = new ArrayList<>(
                 remotePackageRepository.getPackageMetadata(
-                        Arrays.asList(resHttp120, resCovid156), offlineFalseOption));
+                        List.of(resHttp120, resCovid156), offlineFalseOption));
 
         // response should return resolution for same number of requests
         Assert.assertEquals(resolutionResponseDescriptors.size(), 2);
@@ -259,10 +258,10 @@ public class RemotePackageRepositoryTests {
     @Test(description = "Test package name resolution")
     public void testPackageNameResolution() throws CentralClientException {
         // Mock central name resolution
-        PackageNameResolutionResponse centralResponse = new PackageNameResolutionResponse(Arrays.asList(
+        PackageNameResolutionResponse centralResponse = new PackageNameResolutionResponse(List.of(
                 new PackageNameResolutionResponse
                         .Module("ballerina", "covid.client", "1.2.3", "covid", null)),
-                Arrays.asList(
+                List.of(
                 new PackageNameResolutionResponse
                         .Module("ballerina", "unknown", "1.4.5", null, "module not found"))
         );
@@ -271,10 +270,10 @@ public class RemotePackageRepositoryTests {
 
         // Mock response from file system
         when(fileSystemRepository.getPackageNames(anyList(), any(ResolutionOptions.class)))
-                .thenReturn(Arrays.asList(fileJavaArray, fileCovid, fileUnresolved));
+                .thenReturn(List.of(fileJavaArray, fileCovid, fileUnresolved));
 
         List<ImportModuleResponse> response = new ArrayList<>(this.remotePackageRepository
-                .getPackageNames(Arrays.asList(javaArrayReq, covidReq, unknownReq), offlineFalseOption));
+                .getPackageNames(List.of(javaArrayReq, covidReq, unknownReq), offlineFalseOption));
 
         Assert.assertEquals(response.size(), 3);
         ImportModuleResponse javaArray = response.get(0);

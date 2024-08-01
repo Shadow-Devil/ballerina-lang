@@ -23,7 +23,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,7 +46,7 @@ public class StatementContextTest extends CompletionTest {
 
     @Override
     public List<String> skipList() {
-        return Arrays.asList(
+        return List.of(
                 "elseif_stmt_ctx_config3.json",
                 "match_stmt_ctx_config8.json",
                 "match_stmt_ctx_config9.json",

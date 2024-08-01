@@ -50,7 +50,6 @@ import org.eclipse.lsp4j.CodeActionKind;
 import org.eclipse.lsp4j.Range;
 import org.eclipse.lsp4j.TextEdit;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -67,7 +66,7 @@ public class TypeGuardCodeAction implements RangeBasedCodeActionProvider {
 
     @Override
     public List<SyntaxKind> getSyntaxKinds() {
-        return Arrays.asList(SyntaxKind.LOCAL_VAR_DECL, SyntaxKind.ASSIGNMENT_STATEMENT);
+        return List.of(SyntaxKind.LOCAL_VAR_DECL, SyntaxKind.ASSIGNMENT_STATEMENT);
     }
 
     @Override

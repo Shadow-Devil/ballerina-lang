@@ -31,7 +31,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -77,8 +76,8 @@ public class BallerinaTomlTests {
         }
 
         Assert.assertEquals(packageManifest.license(), Collections.singletonList("Apache 2.0"));
-        Assert.assertEquals(packageManifest.authors(), Arrays.asList("jo", "pramodya"));
-        Assert.assertEquals(packageManifest.keywords(), Arrays.asList("toml", "ballerina"));
+        Assert.assertEquals(packageManifest.authors(), List.of("jo", "pramodya"));
+        Assert.assertEquals(packageManifest.keywords(), List.of("toml", "ballerina"));
         Assert.assertEquals(packageManifest.repository(), "https://github.com/ballerina-platform/ballerina-lang");
         Assert.assertEquals(packageManifest.ballerinaVersion(), "slbeta2");
         Assert.assertEquals(packageManifest.visibility(), "private");

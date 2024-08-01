@@ -909,7 +909,7 @@ public abstract class BIRNonTerminator extends BIRAbstractInstruction implements
 
         @Override
         public void setRhsOperands(BIROperand[] operands) {
-            closureMaps = Arrays.asList(operands);
+            closureMaps = List.of(operands);
         }
     }
 
@@ -993,7 +993,7 @@ public abstract class BIRNonTerminator extends BIRAbstractInstruction implements
 
         @Override
         public void setRhsOperands(BIROperand[] operands) {
-            closureVars = new ArrayList<>(Arrays.asList(operands));
+            closureVars = new ArrayList<>(List.of(operands));
             if (annotations != null) {
                 closureVars.remove(closureVars.size() - 1);
                 annotations = operands[operands.length - 1];

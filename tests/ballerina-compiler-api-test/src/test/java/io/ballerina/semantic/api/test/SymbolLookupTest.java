@@ -53,7 +53,6 @@ import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getDefaul
 import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getDocumentForSingleSource;
 import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getSymbolNames;
 import static io.ballerina.semantic.api.test.util.SemanticAPITestUtils.getSymbolsInFile;
-import static java.util.Arrays.asList;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -86,7 +85,7 @@ public class SymbolLookupTest {
 
     @DataProvider(name = "PositionProvider3")
     public Object[][] getPositionsForTypedefs() {
-        List<String> moduleLevelSymbols = asList("aString", "anInt", "HELLO", "testAnonTypes", "Person", "PersonObj",
+        List<String> moduleLevelSymbols = List.of("aString", "anInt", "HELLO", "testAnonTypes", "Person", "PersonObj",
                                                  "Colour", "RED", "GREEN", "BLUE");
         return new Object[][]{
                 {18, 0, 10, moduleLevelSymbols},
@@ -119,7 +118,7 @@ public class SymbolLookupTest {
         ModuleID moduleID = new BallerinaModuleID(pkg.packageID);
 
         Map<String, Symbol> symbolsInFile = getSymbolsInFile(model, srcFile, 18, 9, moduleID);
-        assertList(symbolsInFile, Arrays.asList("test", "v1"));
+        assertList(symbolsInFile, List.of("test", "v1"));
     }
 
     @Test
@@ -135,7 +134,7 @@ public class SymbolLookupTest {
         ModuleID moduleID = new BallerinaModuleID(pkg.packageID);
 
         Map<String, Symbol> symbolsInFile = getSymbolsInFile(model, srcFile, 19, 4, moduleID);
-        assertList(symbolsInFile, Arrays.asList("test", "x"));
+        assertList(symbolsInFile, List.of("test", "x"));
     }
 
     @Test
@@ -154,7 +153,7 @@ public class SymbolLookupTest {
                 .filter(s -> s.getModule().get().id().equals(moduleID)).toList();
         List<String> symbolStringList = symbolList.stream().map(this::createSymbolString).toList();
 
-        List<String> expectedNameList = asList("SimpleRecordTYPE_DEFINITION", "func1ANNOTATION", "func1FUNCTION");
+        List<String> expectedNameList = List.of("SimpleRecordTYPE_DEFINITION", "func1ANNOTATION", "func1FUNCTION");
 
         assert symbolStringList.containsAll(expectedNameList);
     }

@@ -53,7 +53,6 @@ import org.testng.annotations.Test;
 import org.testng.internal.collections.Pair;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -265,8 +264,8 @@ public class TypeBuildersTest {
     @DataProvider(name = "tupleTypeBuilderProvider")
     private Object[][] getTupleTypeBuilders() {
         return new Object[][] {
-                {Arrays.asList(types.STRING, types.INT, types.FLOAT), null, "[string, int, float]"},
-                {Arrays.asList(types.STRING, types.BOOLEAN), types.INT, "[string, boolean, int...]"},
+                {List.of(types.STRING, types.INT, types.FLOAT), null, "[string, int, float]"},
+                {List.of(types.STRING, types.BOOLEAN), types.INT, "[string, boolean, int...]"},
         };
     }
 

@@ -41,7 +41,6 @@ import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -422,7 +421,7 @@ public final class XmlItem extends XmlValue implements BXmlItem {
     @Override
     public XmlValue descendants(List<String> qnames) {
         if (qnames.contains(getQName().toString())) {
-            List<BXml> descendants = Arrays.asList(this);
+            List<BXml> descendants = List.of(this);
             addDescendants(descendants, this, qnames);
             return new XmlSequence(descendants);
         }

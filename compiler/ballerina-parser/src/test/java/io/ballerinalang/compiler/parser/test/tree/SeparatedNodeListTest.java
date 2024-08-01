@@ -26,8 +26,8 @@ import io.ballerina.compiler.syntax.tree.SyntaxTree;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -66,12 +66,12 @@ public class SeparatedNodeListTest extends AbstractSyntaxTreeAPITest {
         Assert.assertEquals(moduleName.get(0).text(), "foo", "Module name parts do not match");
 
         moduleName = imports.get(1).moduleName();
-        Set<String> expected = new HashSet<>(Arrays.asList("foo", "bar"));
-        Set<String> actual = new HashSet<>(Arrays.asList(moduleName.get(0).text(), moduleName.get(1).text()));
+        Set<String> expected = new HashSet<>(List.of("foo", "bar"));
+        Set<String> actual = new HashSet<>(List.of(moduleName.get(0).text(), moduleName.get(1).text()));
         Assert.assertEqualsDeep(actual, expected, "Module name parts do not match");
 
         moduleName = imports.get(2).moduleName();
-        expected = new HashSet<>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h"));
+        expected = new HashSet<>(List.of("a", "b", "c", "d", "e", "f", "g", "h"));
         actual = new HashSet<>(moduleName.size());
         for (IdentifierToken identifierToken : moduleName) {
             actual.add(identifierToken.text());

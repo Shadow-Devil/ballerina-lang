@@ -27,7 +27,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Variable mutability with worker related tests.
@@ -42,7 +42,7 @@ public class VarMutabilityWithWorkersTest {
     public void setup() {
         compileResult = BCompileUtil.compile("test-src/workers/var-mutability-with-workers.bal");
         Assert.assertEquals(compileResult.getErrorCount(), 0,
-                            Arrays.asList(compileResult.getDiagnostics()).toString());
+                List.of(compileResult.getDiagnostics()).toString());
     }
 
     @Test(description = "Test variable mutability with basic types")

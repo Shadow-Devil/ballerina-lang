@@ -39,7 +39,6 @@ import org.ballerinalang.langserver.completions.util.QNameRefCompletionUtil;
 import org.ballerinalang.langserver.completions.util.Snippet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -149,7 +148,7 @@ public class AnnotationDeclarationNodeContext extends AbstractCompletionProvider
                 itemSnippets.addAll(sourceOnlyAttachmentPoints());
                 break;
             case OBJECT:
-                itemSnippets.addAll(Arrays.asList(Snippet.KW_FUNCTION, Snippet.KW_FIELD));
+                itemSnippets.addAll(List.of(Snippet.KW_FUNCTION, Snippet.KW_FIELD));
                 break;
             case RECORD:
                 itemSnippets.add(Snippet.KW_FIELD);
@@ -158,7 +157,7 @@ public class AnnotationDeclarationNodeContext extends AbstractCompletionProvider
                 itemSnippets.add(Snippet.KW_FUNCTION);
                 break;
             case SERVICE:
-                itemSnippets.addAll(Arrays.asList(Snippet.KW_REMOTE, Snippet.KW_REMOTE_FUNCTION));
+                itemSnippets.addAll(List.of(Snippet.KW_REMOTE, Snippet.KW_REMOTE_FUNCTION));
                 break;
             default:
                 break;
@@ -170,7 +169,7 @@ public class AnnotationDeclarationNodeContext extends AbstractCompletionProvider
     }
 
     private List<Snippet> anyAttachmentPoints() {
-        return Arrays.asList(Snippet.KW_SOURCE, Snippet.KW_TYPE, Snippet.KW_CLASS, Snippet.KW_FUNCTION,
+        return List.of(Snippet.KW_SOURCE, Snippet.KW_TYPE, Snippet.KW_CLASS, Snippet.KW_FUNCTION,
                 Snippet.KW_OBJ_FUNCTION, Snippet.KW_SERVICE_REMOTE_FUNCTION, Snippet.KW_PARAMETER,
                 Snippet.KW_RETURN, Snippet.KW_SERVICE, Snippet.KW_OBJECT, Snippet.KW_RECORD, Snippet.KW_OBJECT_FIELD,
                 Snippet.KW_RECORD_FIELD, Snippet.KW_FIELD, Snippet.KW_SOURCE_ANNOTATION, Snippet.KW_SOURCE_EXTERNAL,
@@ -179,13 +178,13 @@ public class AnnotationDeclarationNodeContext extends AbstractCompletionProvider
     }
 
     private List<Snippet> dualAttachmentPoints() {
-        return Arrays.asList(Snippet.KW_TYPE, Snippet.KW_CLASS, Snippet.KW_OBJ_FUNCTION,
+        return List.of(Snippet.KW_TYPE, Snippet.KW_CLASS, Snippet.KW_OBJ_FUNCTION,
                 Snippet.KW_SERVICE_REMOTE_FUNCTION, Snippet.KW_PARAMETER, Snippet.KW_RETURN, Snippet.KW_SERVICE,
                 Snippet.KW_OBJECT_FIELD, Snippet.KW_RECORD_FIELD, Snippet.KW_FIELD, Snippet.KW_FUNCTION);
     }
 
     private List<Snippet> sourceOnlyAttachmentPoints() {
-        return Arrays.asList(Snippet.KW_ANNOTATION, Snippet.KW_EXTERNAL, Snippet.KW_VAR,
+        return List.of(Snippet.KW_ANNOTATION, Snippet.KW_EXTERNAL, Snippet.KW_VAR,
                 Snippet.KW_CONST, Snippet.KW_LISTENER, Snippet.KW_WORKER, Snippet.KW_CLIENT);
     }
 

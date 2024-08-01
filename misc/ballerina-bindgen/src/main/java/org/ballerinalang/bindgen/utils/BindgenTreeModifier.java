@@ -19,8 +19,6 @@ import org.ballerinalang.bindgen.model.JField;
 import org.ballerinalang.bindgen.model.JMethod;
 
 import java.util.AbstractMap;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +56,7 @@ public class BindgenTreeModifier {
         }
         if (jClass.isImportJavaArraysModule()) {
             ImportDeclarationNode jArraysImport = BindgenNodeFactory.createImportDeclarationNode("ballerina",
-                    "jarrays", new LinkedList<>(Arrays.asList("jballerina", ".", "java", ".", "arrays")));
+                    "jarrays", List.of("jballerina", ".", "java", ".", "arrays"));
             imports = imports.add(jArraysImport);
         }
         if (env.getModulesFlag() && env.getPackageName() != null) {
@@ -66,8 +64,7 @@ public class BindgenTreeModifier {
                 ImportDeclarationNode packageImport = BindgenNodeFactory
                         .createImportDeclarationNode(null,
                                 packageName.replace(".", ""),
-                                new LinkedList<>(Collections.singletonList(escapeName(env.getPackageName()) + "."
-                                        + processModuleName(packageName))));
+                                List.of(escapeName(env.getPackageName()) + "." + processModuleName(packageName)));
                 imports = imports.add(packageImport);
             }
         }
@@ -340,7 +337,7 @@ public class BindgenTreeModifier {
     }
 
     private String processModuleName(String packageName) {
-        List<String> reservedWords = Arrays.asList(BALLERINA_RESERVED_WORDS);
+        List<String> reservedWords = List.of(BALLERINA_RESERVED_WORDS);
         List<String> moduleName = new LinkedList<>();
         String[] components = packageName.split("\\.");
         for (String component : components) {
@@ -354,7 +351,7 @@ public class BindgenTreeModifier {
     }
 
     private String escapeName(String name) {
-        List<String> reservedWords = Arrays.asList(BALLERINA_RESERVED_WORDS);
+        List<String> reservedWords = List.of(BALLERINA_RESERVED_WORDS);
         if (reservedWords.contains(name)) {
             name = "'" + name;
         }

@@ -30,7 +30,6 @@ import io.ballerina.runtime.internal.TypeChecker;
 import io.ballerina.runtime.internal.values.ReadOnlyUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -114,7 +113,7 @@ public class BUnionType extends BType implements UnionType, SelectivelyImmutable
     }
 
     public BUnionType(Type[] memberTypes, Type[] originalMemberTypes, int typeFlags, boolean isCyclic, long flags) {
-        this(Arrays.asList(memberTypes), Arrays.asList(originalMemberTypes), typeFlags, isCyclic, flags);
+        this(List.of(memberTypes), List.of(originalMemberTypes), typeFlags, isCyclic, flags);
     }
 
     public BUnionType(List<Type> memberTypes, String name, Module pkg, int typeFlags, boolean isCyclic, long flags) {
@@ -157,7 +156,7 @@ public class BUnionType extends BType implements UnionType, SelectivelyImmutable
         this.readonly = isReadOnlyFlagOn(flags);
         this.isCyclic = isCyclic;
         this.flags = flags;
-        setMemberTypes(Arrays.asList(memberTypes), Arrays.asList(originalMemberTypes));
+        setMemberTypes(List.of(memberTypes), List.of(originalMemberTypes));
         this.typeName = name;
     }
 
@@ -165,12 +164,12 @@ public class BUnionType extends BType implements UnionType, SelectivelyImmutable
         if (members == null) {
             return;
         }
-        this.memberTypes = readonly ? getReadOnlyTypes(members) : Arrays.asList(members);
+        this.memberTypes = readonly ? getReadOnlyTypes(members) : List.of(members);
         setFlagsBasedOnMembers();
     }
 
     public void setOriginalMemberTypes(Type[] originalMemberTypes) {
-        this.originalMemberTypes = Arrays.asList(originalMemberTypes);
+        this.originalMemberTypes = List.of(originalMemberTypes);
     }
 
     private void setOriginalMemberTypes(List<Type> originalMemberTypes) {
@@ -237,9 +236,9 @@ public class BUnionType extends BType implements UnionType, SelectivelyImmutable
     }
 
     public void addMembers(Type... types) {
-        this.memberTypes.addAll(Arrays.asList(types));
+        this.memberTypes.addAll(List.of(types));
         setFlagsBasedOnMembers();
-        this.originalMemberTypes.addAll(Arrays.asList(types));
+        this.originalMemberTypes.addAll(List.of(types));
     }
 
     private void setFlagsBasedOnMembers() {

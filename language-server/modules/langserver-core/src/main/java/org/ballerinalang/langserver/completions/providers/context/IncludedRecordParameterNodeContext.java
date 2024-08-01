@@ -33,7 +33,6 @@ import org.ballerinalang.langserver.completions.util.QNameRefCompletionUtil;
 import org.ballerinalang.langserver.completions.util.Snippet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -70,7 +69,7 @@ public class IncludedRecordParameterNodeContext extends AbstractCompletionProvid
                             .typeKind() == TypeDescKind.RECORD)
                     .collect(Collectors.toList());
             // Add the keywords and snippets related to record type descriptor
-            completionItems.addAll(Arrays.asList(
+            completionItems.addAll(List.of(
                     new SnippetCompletionItem(ctx, Snippet.KW_RECORD.get()),
                     new SnippetCompletionItem(ctx, Snippet.DEF_RECORD_TYPE_DESC.get()),
                     new SnippetCompletionItem(ctx, Snippet.DEF_CLOSED_RECORD_TYPE_DESC.get())

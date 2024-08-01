@@ -35,7 +35,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,7 +73,7 @@ public class TestConnectorTypes {
 
         arrayType = new ArrayType(stringType);
 
-        List<Type> members = Arrays.asList(stringType, boolType);
+        List<Type> members = List.of(stringType, boolType);
         enumType = new EnumType(members);
 
         errorType = new ErrorType();
@@ -95,7 +94,7 @@ public class TestConnectorTypes {
 
         streamType = new StreamType(stringType, boolType);
 
-        tableType = new TableType(stringType, Arrays.asList("foo", "bar"), boolType);
+        tableType = new TableType(stringType, List.of("foo", "bar"), boolType);
 
         unionType = new UnionType(members);
     }
